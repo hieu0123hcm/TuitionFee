@@ -13,18 +13,18 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface SubjectService {
-    @GET("/subject/{id}")
+    @GET("subject/{id}")
     Call<Subject> getSubjectByID(@Path("subjectid") String  subjectid);
 
-    @GET("/subjects")
+    @GET("subjects")
     Call<List<Subject>> getList();
 
-    @POST("/subject/add")
+    @POST("subject/add")
     Call<Subject> addSubject(@Body Subject subject);
 
-    @PUT("update/{id}")
-    Call<Subject> updateSubject(@Path("id") String id, @Body Subject subject);
+    @PUT("subject/update")
+    Call<Subject> updateSubject(@Body Subject subject);
 
-    @DELETE("delete/{id}")
+    @DELETE("subject/delete/{id}")
     Call<Subject> deleteSubject(@Path("id") String id);
 }

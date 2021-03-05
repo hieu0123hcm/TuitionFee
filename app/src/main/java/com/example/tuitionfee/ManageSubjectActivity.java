@@ -78,7 +78,7 @@ public class ManageSubjectActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Subject>> call, Throwable t) {
-                Toast.makeText(ManageSubjectActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                Log.e("ERROR: ", t.getMessage());
             }
         });
     }
