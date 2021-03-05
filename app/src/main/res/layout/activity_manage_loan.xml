@@ -2,19 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ManageSubjectActivity">
-
+    tools:context=".ManageLoanActivity">
 
     <TextView
-        android:id="@+id/txtManageSubject"
+        android:id="@+id/txtManageLoan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Management Subject"
+        android:text="Management Loan"
         android:layout_gravity="center"
         android:textSize="30dp"
         android:textStyle="bold"
@@ -25,7 +22,7 @@
 
 
     <EditText
-        android:id="@+id/edtSearchSubject"
+        android:id="@+id/edtSearchLoan"
         android:layout_width="380dp"
         android:layout_height="wrap_content" />
 
@@ -41,11 +38,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Add Subject" />
+        android:text="Add Loan" />
 
     <ListView
-        android:id="@+id/lstSubject"
+        android:id="@+id/lstLoan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-     />
+        />
+
 </LinearLayout>

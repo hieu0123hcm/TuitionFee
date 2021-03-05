@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/loanName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:fontFamily="sans-serif-black"
+        android:textColor="@color/blue_800"
+        android:textStyle="bold"
+        android:textFontWeight="@android:integer/config_mediumAnimTime" />
+
+    <TextView
+        android:id="@+id/loanID"
+        android:layout_width="197dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blue_800"
+        android:layout_marginLeft="16dp"
+        android:text="Object-Oriented Programming" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider" />
+
+</LinearLayout>

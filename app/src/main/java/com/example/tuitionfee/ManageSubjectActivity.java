@@ -39,7 +39,7 @@ public class ManageSubjectActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.lstSubject);
         btnAdd = (Button) findViewById(R.id.btnAdd);
-        edtSearch = (EditText) findViewById(R.id.edtsubjectID);
+        edtSearch = (EditText) findViewById(R.id.edtSearchSubject);
         subjectService = APIUtils.getSubjectService();
 
         getSubjectList();

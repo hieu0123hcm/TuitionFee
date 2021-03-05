@@ -14,8 +14,8 @@ import retrofit2.http.Path;
 
 public interface LoanService {
 
-    @GET("loan/{studentid}")
-    Call<Loan> getLoanByStudentId(@Path("loanid") String  loanid);
+    @GET("loan/{id}")
+    Call<Loan> getLoanByStudentId(@Path("id") String id);
 
     @GET("loans")
     Call<List<Loan>> getList();

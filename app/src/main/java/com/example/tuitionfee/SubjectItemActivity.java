@@ -60,7 +60,15 @@ public class SubjectItemActivity extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                String subjectId = txtSubjectID.getText().toString().trim();
+                String subjectName = txtSubjectName.getText().toString().trim();
+                Float tuitionFee = Float.parseFloat(txtTuititionfee.getText().toString().trim());
+                String description = txtDescription.getText().toString().trim();
+                subjectChoose.setSubjectid(subjectId);
+                subjectChoose.setSubject(subjectName);
+                subjectChoose.setDescription(description);
+                subjectChoose.setTuitionfee(tuitionFee);
+                update(subjectChoose);
             }
         });
 
@@ -85,6 +93,22 @@ public class SubjectItemActivity extends AppCompatActivity {
 
 
 
+    }
+    public void update(Subject subject){
+        Call<Subject> call = subjectService.updateSubject(subject);
+        call.enqueue(new Callback<Subject>() {
+            @Override
+            public void onResponse(Call<Subject> call, Response<Subject> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(SubjectItemActivity.this, "Subject update successfully!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Subject> call, Throwable t) {
+                Log.e("ERROR: ", t.getMessage());
+            }
+        });
     }
 
 }

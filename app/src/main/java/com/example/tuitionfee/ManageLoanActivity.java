@@ -1,0 +1,105 @@
+package com.example.tuitionfee;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.example.tuitionfee.model.Loan;
+import com.example.tuitionfee.model.Loan;
+import com.example.tuitionfee.remote.APIUtils;
+import com.example.tuitionfee.remote.LoanService;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class ManageLoanActivity extends AppCompatActivity {
+
+    LoanService loanService;
+    Button btnAdd;
+    List<Loan> listLoan = new ArrayList<>();
+    ListView listView;
+    Button btnSearch;
+    EditText edtSearch;
+    Loan LoanFind;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_manage_loan);
+
+        listView = (ListView) findViewById(R.id.lstLoan);
+        btnAdd = (Button) findViewById(R.id.btnAdd);
+        edtSearch = (EditText) findViewById(R.id.edtSearchLoan);
+        loanService = APIUtils.getLoanService();
+
+        getLoanList();
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AddLoanActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnSearch = (Button) findViewById(R.id.btnSearch);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getLoan();
+            }
+        });
+    }
+
+    public void getLoanList() {
+        Call<List<Loan>> call = loanService.getList();
+
+
+        call.enqueue(new Callback<List<Loan>>() {
+            @Override
+            public void onResponse(Call<List<Loan>> call, Response<List<Loan>> response) {
+                if (response.isSuccessful()) {
+                    listLoan = response.body();
+                            listView.setAdapter(new LoanCustomListAdapter(ManageLoanActivity.this, listLoan));
+                    Toast.makeText(ManageLoanActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Loan>> call, Throwable t) {
+                Log.e("ERROR: ", t.getMessage());
+            }
+        });
+    }
+
+    private void getLoan() {
+        String id = edtSearch.getText().toString().trim();
+        Call<Loan> call = loanService.getLoanByStudentId(id);
+        listLoan = null;
+
+        call.enqueue(new Callback<Loan>() {
+            @Override
+            public void onResponse(Call<Loan> call, Response<Loan> response) {
+                LoanFind = response.body();
+                listLoan.add(LoanFind);
+                listView.setAdapter(new LoanCustomListAdapter(ManageLoanActivity.this, listLoan));
+                Toast.makeText(ManageLoanActivity.this, "Success", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Loan> call, Throwable t) {
+                Log.e("ERROR: ", t.getMessage());
+            }
+        });
+    }
+}

@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TuitionFee">
-        <activity android:name=".AddSubjectActivity"></activity>
+        <activity android:name=".LoanItemActivity"></activity>
+        <activity android:name=".AddLoanActivity" />
+        <activity android:name=".ManageLoanActivity" />
+        <activity android:name=".AddSubjectActivity" />
         <activity android:name=".SubjectItemActivity" />
         <activity android:name=".ManageSubjectActivity" />
         <activity android:name=".StudyingItemActivity" />

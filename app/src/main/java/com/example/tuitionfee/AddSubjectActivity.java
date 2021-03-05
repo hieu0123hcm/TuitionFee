@@ -73,7 +73,7 @@ public class AddSubjectActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Subject> call, Response<Subject> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(AddSubjectActivity.this, "User created successfully!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddSubjectActivity.this, "Subject created successfully!", Toast.LENGTH_SHORT).show();
                 }
             }
 

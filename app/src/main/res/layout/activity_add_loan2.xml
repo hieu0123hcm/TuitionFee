@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddLoanActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Loan"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        />
+
+    <EditText
+        android:id="@+id/edtloanID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint=" loan ID"
+        />
+    <EditText
+        android:id="@+id/edtstudentId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="studentId"
+        />
+    <EditText
+        android:id="@+id/edtLoandate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Loandate"
+        />
+    <EditText
+        android:id="@+id/edtExpireddate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Expireddate"
+        />
+    <EditText
+        android:id="@+id/edtBundleid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Bundleid"
+        />
+
+    <EditText
+        android:id="@+id/edtAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Amount"
+        />
+    <EditText
+        android:id="@+id/edtLoanstatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Loanstatus"
+        />
+    <EditText
+        android:id="@+id/edtAmountreturned"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Amountreturned"
+        />
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        />
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        />
+
+</LinearLayout>
