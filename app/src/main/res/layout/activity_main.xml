@@ -20,6 +20,13 @@
         android:textColor="@color/blue_800"
         android:layout_marginBottom="5dp"/>
 
+    <Button
+        android:id="@+id/btnManageSubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Manage Subject" />
+
+
     <ListView
         android:id="@+id/studyingListView"
         android:layout_width="match_parent"

@@ -2,9 +2,11 @@ package com.example.tuitionfee;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,6 +25,7 @@ public class StudyingActivity extends AppCompatActivity {
     StudyingService studyingService;
     List<Studying> studyingList = new ArrayList<Studying>();
     ListView listView;
+    Button btnManageSubject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,15 @@ public class StudyingActivity extends AppCompatActivity {
         studyingService = APIUtils.getStudyingService();
 
         getStudyingList();
+
+        btnManageSubject = (Button) findViewById(R.id.btnManageSubject);
+        btnManageSubject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ManageSubjectActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -50,7 +62,7 @@ public class StudyingActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Studying>> call, Throwable t) {
-                Toast.makeText(StudyingActivity.this,"Error",Toast.LENGTH_SHORT).show();
+                Log.e("ERROR: ", t.getMessage());
             }
         });
     }
