@@ -25,6 +25,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Manage Subject" />
+    <Button
+        android:id="@+id/btnProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Profile" />
 
 
     <ListView
