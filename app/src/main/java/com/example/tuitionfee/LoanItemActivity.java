@@ -54,6 +54,27 @@ public class LoanItemActivity extends AppCompatActivity {
         edtLoanstatus = (EditText) findViewById(R.id.txtLoanstatus);
         edtAmountreturned = (EditText) findViewById(R.id.txtAmountreturned);
 
+        Bundle extras = getIntent().getExtras();
+        String loandate = extras.getString("loandate");
+        String studentid = extras.getString("studentid");
+        String expireddate =extras.getString("expireddate");
+        String amount =extras.getString("amount");
+        String loanstatus =extras.getString("loanstatus");
+        String amountreturned =extras.getString("amountreturned");
+        String loan_id =extras.getString("loan_id");
+        String bundleid =extras.getString("bundleid");
+
+        edtloanID.setText(loan_id);
+        edtstudentId.setText(studentid);
+        edtLoandate.setText(loandate);
+        edtExpireddate.setText(expireddate);
+        edtBundleid.setText(bundleid);
+        edtAmount.setText(amount);
+        edtLoanstatus.setText(loanstatus);
+        edtAmountreturned.setText(amountreturned);
+
+
+
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -26,6 +26,7 @@ public class StudyingActivity extends AppCompatActivity {
     List<Studying> studyingList = new ArrayList<Studying>();
     ListView listView;
     Button btnManageSubject;
+    Button btnProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +38,25 @@ public class StudyingActivity extends AppCompatActivity {
 
         getStudyingList();
 
+
+        /*Test ManageSubject*/
         btnManageSubject = (Button) findViewById(R.id.btnManageSubject);
         btnManageSubject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ManageSubjectActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        /*Test Profile*/
+        btnProfile = (Button) findViewById(R.id.btnProfile);
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+               intent.putExtra("role","admin");
+                intent.putExtra("account_id","admin");
                 startActivity(intent);
             }
         });
