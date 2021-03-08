@@ -26,6 +26,7 @@ public class StudyingActivity extends AppCompatActivity {
     List<Studying> studyingList = new ArrayList<Studying>();
     ListView listView;
     Button btnManageSubject;
+    Button btnManageLoan;
     Button btnProfile;
 
     @Override
@@ -36,7 +37,7 @@ public class StudyingActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.studyingListView);
         studyingService = APIUtils.getStudyingService();
 
-        getStudyingList();
+        //getStudyingList();
 
 
         /*Test ManageSubject*/
@@ -48,6 +49,17 @@ public class StudyingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btnManageLoan = (Button) findViewById(R.id.btnManageLoan);
+        btnManageLoan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ManageLoanActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         /*Test Profile*/
         btnProfile = (Button) findViewById(R.id.btnProfile);

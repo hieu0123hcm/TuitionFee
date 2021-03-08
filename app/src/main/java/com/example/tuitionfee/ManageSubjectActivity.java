@@ -44,7 +44,6 @@ public class ManageSubjectActivity extends AppCompatActivity {
 
         getSubjectList();
 
-
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,20 +56,44 @@ public class ManageSubjectActivity extends AppCompatActivity {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getSubject();
+                    listSubject.clear();
+                String id = edtSearch.getText().toString().trim();
+                Call<Subject> call = subjectService.getSubjectByID(id);
+
+                call.enqueue(new Callback<Subject>() {
+                    @Override
+                    public void onResponse(Call<Subject> call, Response<Subject> response) {
+                        subjectFind = response.body();
+                        if(response.body() != null){
+                            listSubject.isEmpty();
+                            listSubject.add(subjectFind);
+                            listView.setAdapter(new SubjectCustomListAdapter(ManageSubjectActivity.this, listSubject));
+                            Toast.makeText(ManageSubjectActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Subject> call, Throwable t) {
+                        Log.e("ERROR: ", t.getMessage());
+                    }
+                });
             }
+
         });
     }
 
     public void getSubjectList() {
         Call<List<Subject>> call = subjectService.getList();
-
-
         call.enqueue(new Callback<List<Subject>>() {
             @Override
             public void onResponse(Call<List<Subject>> call, Response<List<Subject>> response) {
                 if (response.isSuccessful()) {
                     listSubject = response.body();
+//                    System.out.println(listSubject.get(0).getSubject());
+//                    System.out.println(listSubject.get(0).getDescription());
+//                    System.out.println(listSubject.get(0).getSubjectid());
+//                    System.out.println(listSubject.get(0).getTuitionfee());
                     listView.setAdapter(new SubjectCustomListAdapter(ManageSubjectActivity.this, listSubject));
                     Toast.makeText(ManageSubjectActivity.this, "Success", Toast.LENGTH_SHORT).show();
                 }
@@ -83,24 +106,27 @@ public class ManageSubjectActivity extends AppCompatActivity {
         });
     }
 
-    private void getSubject() {
-        String id = edtSearch.getText().toString().trim();
-        Call<Subject> call = subjectService.getSubjectByID(id);
-        listSubject = null;
-
-        call.enqueue(new Callback<Subject>() {
-            @Override
-            public void onResponse(Call<Subject> call, Response<Subject> response) {
-                subjectFind = response.body();
-                listSubject.add(subjectFind);
-                listView.setAdapter(new SubjectCustomListAdapter(ManageSubjectActivity.this, listSubject));
-                Toast.makeText(ManageSubjectActivity.this, "Success", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(Call<Subject> call, Throwable t) {
-                Log.e("ERROR: ", t.getMessage());
-            }
-        });
-    }
+//    public void getSubject() {
+//        String id = edtSearch.getText().toString().trim();
+//        Call<Subject> call = subjectService.getSubjectByID(id);
+//        listSubject = null;
+//
+//        call.enqueue(new Callback<Subject>() {
+//            @Override
+//            public void onResponse(Call<Subject> call, Response<Subject> response) {
+//                subjectFind = response.body();
+//                if(response.body() != null){
+//                    listSubject.add(subjectFind);
+//                    listView.setAdapter(new SubjectCustomListAdapter(ManageSubjectActivity.this, listSubject));
+//                    Toast.makeText(ManageSubjectActivity.this, "Success", Toast.LENGTH_SHORT).show();
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Subject> call, Throwable t) {
+//                Log.e("ERROR: ", t.getMessage());
+//            }
+//        });
+//    }
 }

@@ -5,7 +5,7 @@ public class APIUtils {
     private APIUtils() {
     }
 
-    public static final String API_URL = "http://127.0.0.1:5000/";
+    public static final String API_URL = "http://192.168.22.2:5000/";
 
     public static StudyingService getStudyingService() {
         return RetrofitClient.getClient(API_URL).create(StudyingService.class);

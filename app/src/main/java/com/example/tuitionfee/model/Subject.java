@@ -9,7 +9,7 @@ public class Subject {
     @Expose
     private String subjectid;
 
-    @SerializedName("tuitionfee")
+    @SerializedName("tuitionFee")
     private Float tuitionfee;
 
     @SerializedName("subject")

@@ -65,7 +65,7 @@ public class AddLoanActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Long Id = Long.parseLong(edtloanID.getText().toString().trim());
+                Long id = Long.parseLong(edtloanID.getText().toString().trim());
                 Date loandate = null;
                 Date expiredDate = null; 
                 try {
@@ -79,7 +79,7 @@ public class AddLoanActivity extends AppCompatActivity {
                 Long amount =  Long.parseLong(edtAmount.getText().toString().trim());
                 String loanstatus = edtLoanstatus.getText().toString().trim();
                 Long amountreturned =  Long.parseLong(edtAmountreturned.getText().toString().trim());
-                loanAdd.setId(Id);
+                loanAdd.setLoanId(id);
                 loanAdd.setAmount(amount);
                 loanAdd.setAmountReturned(amountreturned);
                 loanAdd.setBundleId(bundleid);

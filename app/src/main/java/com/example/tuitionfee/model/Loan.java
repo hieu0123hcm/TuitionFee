@@ -6,33 +6,33 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 
 public class Loan {
-    @SerializedName("loan_id")
+    @SerializedName("loanId")
     @Expose
-    private Long id;
+    private Long loanId;
 
-    @SerializedName("loandate")
+    @SerializedName("loanDate")
     private Date loanDate;
 
-    @SerializedName("studentid")
+    @SerializedName("studentId")
     private String studentId;
 
-    @SerializedName("expireddate")
+    @SerializedName("expiredDate")
     private Date expiredDate;
 
-    @SerializedName("bundleid")
+    @SerializedName("bundleId")
     private Long bundleId;
 
     @SerializedName("amount")
     private Long amount;
 
-    @SerializedName("loanstatus")
+    @SerializedName("loanStatus")
     private String loanStatus;
 
-    @SerializedName("amountreturned")
+    @SerializedName("amountReturned")
     private Long amountReturned;
 
-    public Loan(Long id, Date loanDate, String studentId, Date expiredDate, Long bundleId, Long amount, String loanStatus, Long amountReturned) {
-        this.id = id;
+    public Loan(Long loanId, Date loanDate, String studentId, Date expiredDate, Long bundleId, Long amount, String loanStatus, Long amountReturned) {
+        this.loanId = loanId;
         this.loanDate = loanDate;
         this.studentId = studentId;
         this.expiredDate = expiredDate;
@@ -45,12 +45,12 @@ public class Loan {
     public Loan() {
     }
 
-    public Long getId() {
-        return id;
+    public Long getLoanId() {
+        return loanId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setLoanId(Long loanId) {
+        this.loanId = loanId;
     }
 
     public Date getLoanDate() {

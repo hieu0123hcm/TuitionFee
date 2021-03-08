@@ -43,18 +43,19 @@ public class LoanCustomListAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.loan_list_adapter, parent, false);
         }
         Loan currentloan = (Loan) getItem(position);
+//        System.out.println(currentloan.getStudentId());
 
-        TextView edtstudentId = (TextView) convertView.findViewById(R.id.edtstudentId);
-        TextView tvloanID = (TextView) convertView.findViewById(R.id.edtloanID);
+        TextView tvStudentId = (TextView) convertView.findViewById(R.id.loanName);
+        TextView tvloanID = (TextView) convertView.findViewById(R.id.loanID);
 
-        edtstudentId.setText(currentloan.getStudentId());
-        tvloanID.setText("loan ID: " + currentloan.getId());
+        tvStudentId.setText(currentloan.getStudentId());
+        tvloanID.setText("loan ID: " + currentloan.getLoanId());
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, LoanItemActivity.class);
-                intent.putExtra("loan_id", currentloan.getId());
+                intent.putExtra("loan_id", currentloan.getLoanId());
                 intent.putExtra("loandate", currentloan.getLoanDate());
                 intent.putExtra("studentid", currentloan.getStudentId());
                 intent.putExtra("expireddate", currentloan.getExpiredDate());

@@ -14,8 +14,8 @@ import retrofit2.http.Path;
 
 public interface LoanService {
 
-    @GET("loan/{id}")
-    Call<Loan> getLoanByStudentId(@Path("id") String id);
+    @GET("loan/{studentId}")
+    Call<List<Loan>> getLoanByStudentId(@Path("studentId") String studentId);
 
     @GET("loans")
     Call<List<Loan>> getList();
@@ -26,6 +26,6 @@ public interface LoanService {
     @PUT("loan/update")
     Call<Loan> updateLoan(@Body Loan loan);
 
-    @DELETE("loan/delete/{id}")
-    Call<Loan> deleteLoan(@Path("id") Long id);
+    @DELETE("loan/delete/{loanId}")
+    Call<Loan> deleteLoan(@Path("loanId") Long loanId);
 }

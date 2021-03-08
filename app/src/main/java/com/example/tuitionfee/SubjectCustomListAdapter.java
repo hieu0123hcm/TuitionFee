@@ -49,10 +49,11 @@ public class SubjectCustomListAdapter extends BaseAdapter {
         Subject currentSubject = (Subject) getItem(position);
 
         TextView tvSubjectName = (TextView) convertView.findViewById(R.id.subjectName);
-        TextView tvSubjectID = (TextView) convertView.findViewById(R.id.studyingSubject);
+        TextView tvSubjectID = (TextView) convertView.findViewById(R.id.subjectID);
 
         tvSubjectName.setText(currentSubject.getSubject());
-        tvSubjectID.setText("Subject ID: " + currentSubject.getSubjectid());
+        System.out.println("Test" + currentSubject.getSubject());
+        tvSubjectID.setText("Subject ID: " + String.valueOf(currentSubject.getSubjectid()));
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

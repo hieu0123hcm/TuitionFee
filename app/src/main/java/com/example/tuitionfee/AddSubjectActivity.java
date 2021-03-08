@@ -11,8 +11,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.tuitionfee.model.Subject;
+import com.example.tuitionfee.remote.APIUtils;
 import com.example.tuitionfee.remote.SubjectService;
 
+import java.text.ParseException;
 import java.util.List;
 
 import retrofit2.Call;
@@ -21,7 +23,7 @@ import retrofit2.Response;
 
 public class AddSubjectActivity extends AppCompatActivity {
     SubjectService subjectService;
-    Subject subjectAdd;
+
     Button btnCancel;
     Button btnAdd;
     EditText edtsubjectID;
@@ -57,30 +59,35 @@ public class AddSubjectActivity extends AppCompatActivity {
                 String subjectName = edtsubjectName.getText().toString().trim();
                 Float tuitionFee = Float.parseFloat(edtTuitionfee.getText().toString().trim());
                 String description = edtDescription.getText().toString().trim();
+
+                Subject subjectAdd = new Subject();
                 subjectAdd.setSubjectid(subjectId);
                 subjectAdd.setSubject(subjectName);
                 subjectAdd.setDescription(description);
                 subjectAdd.setTuitionfee(tuitionFee);
-                addSubject(subjectAdd);
-            }
-        });
+                System.out.println(subjectAdd);
 
-    }
+                if(subjectService == null){
+                    subjectService = APIUtils.getSubjectService();
 
-    public void addSubject(Subject subject) {
-        Call<Subject> call = subjectService.addSubject(subject);
-        call.enqueue(new Callback<Subject>() {
-            @Override
-            public void onResponse(Call<Subject> call, Response<Subject> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(AddSubjectActivity.this, "Subject created successfully!", Toast.LENGTH_SHORT).show();
                 }
-            }
+                Call<Subject> call = subjectService.addSubject(subjectAdd);
+                call.enqueue(new Callback<Subject>() {
+                    @Override
+                    public void onResponse(Call<Subject> call, Response<Subject> response) {
+                        if (response.isSuccessful()) {
+                            Toast.makeText(AddSubjectActivity.this, "Subject created successfully!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
 
-            @Override
-            public void onFailure(Call<Subject> call, Throwable t) {
-                Log.e("ERROR: ", t.getMessage());
+                    @Override
+                    public void onFailure(Call<Subject> call, Throwable t) {
+                        Log.e("ERROR: ", t.getMessage());
+                    }
+                });
             }
         });
+
     }
+
 }

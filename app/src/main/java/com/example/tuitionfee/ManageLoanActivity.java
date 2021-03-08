@@ -40,9 +40,29 @@ public class ManageLoanActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.lstLoan);
         btnAdd = (Button) findViewById(R.id.btnAdd);
         edtSearch = (EditText) findViewById(R.id.edtSearchLoan);
-        loanService = APIUtils.getLoanService();
 
-        getLoanList();
+        //Get List
+        if(loanService == null){
+            loanService = APIUtils.getLoanService();
+        }
+        Call<List<Loan>> call = loanService.getList();
+
+        call.enqueue(new Callback<List<Loan>>() {
+            @Override
+            public void onResponse(Call<List<Loan>> call, Response<List<Loan>> response) {
+                if (response.isSuccessful()) {
+                    listLoan = response.body();
+                    System.out.println(listLoan.get(1));
+                    listView.setAdapter(new LoanCustomListAdapter(ManageLoanActivity.this, listLoan));
+                    Toast.makeText(ManageLoanActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Loan>> call, Throwable t) {
+                Log.e("ERROR: ", t.getMessage());
+            }
+        });
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,18 +81,21 @@ public class ManageLoanActivity extends AppCompatActivity {
         });
     }
 
-    public void getLoanList() {
-        Call<List<Loan>> call = loanService.getList();
+    private void getLoan() {
+        listLoan.isEmpty();
+        String id = edtSearch.getText().toString().trim();
+        if (loanService == null){
+            loanService = APIUtils.getLoanService();
+        }
 
-
+        Call<List<Loan>> call = loanService.getLoanByStudentId(id);
         call.enqueue(new Callback<List<Loan>>() {
             @Override
             public void onResponse(Call<List<Loan>> call, Response<List<Loan>> response) {
-                if (response.isSuccessful()) {
-                    listLoan = response.body();
-                            listView.setAdapter(new LoanCustomListAdapter(ManageLoanActivity.this, listLoan));
-                    Toast.makeText(ManageLoanActivity.this, "Success", Toast.LENGTH_SHORT).show();
-                }
+                listLoan = response.body();
+                System.out.println(listLoan);
+                listView.setAdapter(new LoanCustomListAdapter(ManageLoanActivity.this, listLoan));
+                Toast.makeText(ManageLoanActivity.this, "Success", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -80,26 +103,6 @@ public class ManageLoanActivity extends AppCompatActivity {
                 Log.e("ERROR: ", t.getMessage());
             }
         });
-    }
 
-    private void getLoan() {
-        String id = edtSearch.getText().toString().trim();
-        Call<Loan> call = loanService.getLoanByStudentId(id);
-        listLoan = null;
-
-        call.enqueue(new Callback<Loan>() {
-            @Override
-            public void onResponse(Call<Loan> call, Response<Loan> response) {
-                LoanFind = response.body();
-                listLoan.add(LoanFind);
-                listView.setAdapter(new LoanCustomListAdapter(ManageLoanActivity.this, listLoan));
-                Toast.makeText(ManageLoanActivity.this, "Success", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(Call<Loan> call, Throwable t) {
-                Log.e("ERROR: ", t.getMessage());
-            }
-        });
     }
 }

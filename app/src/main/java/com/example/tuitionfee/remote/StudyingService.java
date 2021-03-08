@@ -11,4 +11,5 @@ import retrofit2.http.Path;
 public interface StudyingService {
     @GET("studying/{studentID}/{studyStatus}")
     Call<List<Studying>> getStudyingByStuIDAndStatus(@Path("studentID") String  studentID, @Path("studyStatus") String studyStatus);
+
 }
