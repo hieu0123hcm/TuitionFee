@@ -19,5 +19,13 @@ public class APIUtils {
         return RetrofitClient.getClient(API_URL).create(LoanService.class);
     }
 
+    public static AdminService getAdminService() {
+        return RetrofitClient.getClient(API_URL).create(AdminService.class);
+    }
+
+    public static StudentSevice getStudentService() {
+        return RetrofitClient.getClient(API_URL).create(StudentSevice.class);
+    }
+
 }
 

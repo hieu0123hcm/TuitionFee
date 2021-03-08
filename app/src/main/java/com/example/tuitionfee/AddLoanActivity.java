@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.tuitionfee.model.Loan;
 import com.example.tuitionfee.model.Loan;
+import com.example.tuitionfee.remote.APIUtils;
 import com.example.tuitionfee.remote.LoanService;
 
 import java.text.ParseException;
@@ -36,6 +37,9 @@ public class AddLoanActivity extends AppCompatActivity {
     EditText edtAmount;
     EditText edtLoanstatus;
     EditText edtAmountreturned;
+
+    Date loandate;
+    Date expiredDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,9 +69,10 @@ public class AddLoanActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Long id = Long.parseLong(edtloanID.getText().toString().trim());
-                Date loandate = null;
-                Date expiredDate = null; 
+//                Date loandate = null;
+//                Date expiredDate = null;
                 try {
                     loandate = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(edtLoandate.getText().toString().trim());
                      expiredDate = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(edtExpireddate.getText().toString().trim());
@@ -79,15 +84,26 @@ public class AddLoanActivity extends AppCompatActivity {
                 Long amount =  Long.parseLong(edtAmount.getText().toString().trim());
                 String loanstatus = edtLoanstatus.getText().toString().trim();
                 Long amountreturned =  Long.parseLong(edtAmountreturned.getText().toString().trim());
+
+                loanAdd= new Loan();
                 loanAdd.setLoanId(id);
+                System.out.println("id"+id);
                 loanAdd.setAmount(amount);
+                System.out.println("amount"+amount);
                 loanAdd.setAmountReturned(amountreturned);
+                System.out.println("amountreturned"+amountreturned);
                 loanAdd.setBundleId(bundleid);
+                System.out.println("bundleid"+bundleid);
                 loanAdd.setExpiredDate(expiredDate);
+                System.out.println("expiredDate"+expiredDate);
                 loanAdd.setStudentId(studentId);
+                System.out.println("studentId"+studentId);
                 loanAdd.setLoanStatus(loanstatus);
+                System.out.println("loanstatus"+loanstatus);
                 loanAdd.setLoanDate(loandate);
+                System.out.println("loandate"+loandate);
                 addLoan(loanAdd);
+
             }
         });
         
@@ -95,11 +111,16 @@ public class AddLoanActivity extends AppCompatActivity {
     }
 
     public void addLoan(Loan loan) {
+        if (loanService == null){
+            loanService = APIUtils.getLoanService();
+        }
+
         Call<Loan> call = loanService.addLoan(loan);
         call.enqueue(new Callback<Loan>() {
             @Override
             public void onResponse(Call<Loan> call, Response<Loan> response) {
                 if (response.isSuccessful()) {
+                    System.out.println("hihihihihihihihihihihihihihihihihiad loan");
                     Toast.makeText(AddLoanActivity.this, "Loan created successfully!", Toast.LENGTH_SHORT).show();
                 }
             }

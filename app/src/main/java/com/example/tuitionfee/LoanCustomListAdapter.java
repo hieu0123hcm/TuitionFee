@@ -43,7 +43,7 @@ public class LoanCustomListAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.loan_list_adapter, parent, false);
         }
         Loan currentloan = (Loan) getItem(position);
-//        System.out.println(currentloan.getStudentId());
+
 
         TextView tvStudentId = (TextView) convertView.findViewById(R.id.loanName);
         TextView tvloanID = (TextView) convertView.findViewById(R.id.loanID);
@@ -55,14 +55,14 @@ public class LoanCustomListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, LoanItemActivity.class);
-                intent.putExtra("loan_id", currentloan.getLoanId());
-                intent.putExtra("loandate", currentloan.getLoanDate());
-                intent.putExtra("studentid", currentloan.getStudentId());
-                intent.putExtra("expireddate", currentloan.getExpiredDate());
-                intent.putExtra("bundleid", currentloan.getBundleId());
-                intent.putExtra("amountreturned", currentloan.getAmountReturned());
+                intent.putExtra("loanId", String.valueOf(currentloan.getLoanId()));
+                intent.putExtra("loandate", String.valueOf(currentloan.getLoanDate()));
+                intent.putExtra("studentId", currentloan.getStudentId());
+                intent.putExtra("expiredDate", String.valueOf(currentloan.getExpiredDate()));
+                intent.putExtra("bundleId", String.valueOf(currentloan.getBundleId()));
+                intent.putExtra("amountReturned", String.valueOf(currentloan.getAmountReturned()));
                 intent.putExtra("amount",String.valueOf(currentloan.getAmount()));
-                intent.putExtra("loanstatus", currentloan.getLoanStatus());
+                intent.putExtra("loanStatus", currentloan.getLoanStatus());
                 context.startActivity(intent);
             }
         });

@@ -29,6 +29,7 @@ public class StudyingActivity extends AppCompatActivity {
     Button btnManageLoan;
     Button btnProfile;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,8 +68,10 @@ public class StudyingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-               intent.putExtra("role","admin");
-                intent.putExtra("account_id","admin");
+
+                Long id = Long.valueOf(15);
+               intent.putExtra("role","student");
+                intent.putExtra("account_id",id);
                 startActivity(intent);
             }
         });

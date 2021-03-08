@@ -6,55 +6,43 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 
 public class Admin {
-    @SerializedName("account_id")
+    @SerializedName("admin_id")
     @Expose
-    private Long id;
+    private String admin_id;
 
-    @SerializedName("username")
-    private String username;
-
-    @SerializedName("password")
-    private String password;
+    @SerializedName("fullname")
+    private String fullname;
 
     @SerializedName("birthdate")
     private Date birthdate;
 
-    @SerializedName("role")
-    private String role;
+    @SerializedName("account_id")
+    private String account_id;
 
-    public Admin(Long id, String username, String password, Date birthdate, String role) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
+    public Admin(String admin_id, String fullname, Date birthdate, String account_id) {
+        this.admin_id = admin_id;
+        this.fullname = fullname;
         this.birthdate = birthdate;
-        this.role = role;
+        this.account_id = account_id;
     }
 
     public Admin() {
     }
 
-    public Long getId() {
-        return id;
+    public String getAdmin_id() {
+        return admin_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setAdmin_id(String admin_id) {
+        this.admin_id = admin_id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public Date getBirthdate() {
@@ -65,11 +53,11 @@ public class Admin {
         this.birthdate = birthdate;
     }
 
-    public String getRole() {
-        return role;
+    public String getAccount_id() {
+        return account_id;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setAccount_id(String account_id) {
+        this.account_id = account_id;
     }
 }

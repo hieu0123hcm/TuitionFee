@@ -31,13 +31,14 @@ public class ManageLoanActivity extends AppCompatActivity {
     ListView listView;
     Button btnSearch;
     EditText edtSearch;
-    Loan LoanFind;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_loan);
 
         listView = (ListView) findViewById(R.id.lstLoan);
+        listView.setAdapter(null);
         btnAdd = (Button) findViewById(R.id.btnAdd);
         edtSearch = (EditText) findViewById(R.id.edtSearchLoan);
 

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.tuitionfee.model.Admin;
 import com.example.tuitionfee.model.Student;
+import com.example.tuitionfee.remote.APIUtils;
 import com.example.tuitionfee.remote.AdminService;
 import com.example.tuitionfee.remote.StudentSevice;
 
@@ -56,39 +57,49 @@ public class ProfileActivity extends AppCompatActivity {
         viewSemester = findViewById(R.id.viewSemester);
 
         Bundle extras = getIntent().getExtras();
+
+
         Long account_id = extras.getLong("account_id");
         String role = extras.getString("role").trim();
         txtAccount = findViewById(R.id.txtAccount);
         txtAccount.setText(role);
 
         if (role.equals("admin")){
-            txtMajor.setVisibility(View.INVISIBLE);
-            labelMajor.setVisibility(View.INVISIBLE);
-            viewMajor.setVisibility(View.INVISIBLE);
-            labelSemester.setVisibility(View.INVISIBLE);
-            txtSemester.setVisibility(View.INVISIBLE);
-            viewSemester.setVisibility(View.INVISIBLE);
-            imgSemester.setVisibility(View.INVISIBLE);
-            imgMajor.setVisibility(View.INVISIBLE);
+//            txtMajor.setVisibility(View.INVISIBLE);
+//            labelMajor.setVisibility(View.INVISIBLE);
+//            viewMajor.setVisibility(View.INVISIBLE);
+//            labelSemester.setVisibility(View.INVISIBLE);
+//            txtSemester.setVisibility(View.INVISIBLE);
+//            viewSemester.setVisibility(View.INVISIBLE);
+//            imgSemester.setVisibility(View.INVISIBLE);
+//            imgMajor.setVisibility(View.INVISIBLE);
 
+            if(adminService == null){
+                adminService = APIUtils.getAdminService();
+            }
             Call<Admin> call = adminService.findByAccountId(account_id);
             call.enqueue(new Callback<Admin>() {
                 @Override
                 public void onResponse(Call<Admin> call, Response<Admin> response) {
                     if (response.isSuccessful()){
                         admin = response.body();
-                        txtID.setText(admin.getId().toString());
-                        txtName.setText(admin.getUsername());
+                        txtID.setText(admin.getAdmin_id().toString());
+                        txtName.setText(admin.getFullname());
                         txtBirthday.setText(admin.getBirthdate().toString());
+                        txtAccount.setText(admin.getAccount_id());
                     }
                 }
-
                 @Override
                 public void onFailure(Call<Admin> call, Throwable t) {
                     Log.e("ERROR: ", t.getMessage());
                 }
             });
-        }else{
+
+
+        }else if(role.equals("student")){
+            if(studentSevice == null){
+                studentSevice = APIUtils.getStudentService();
+            }
             Call<Student> call = studentSevice.findByAccountId(account_id);
             call.enqueue(new Callback<Student>() {
                 @Override

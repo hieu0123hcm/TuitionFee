@@ -2,6 +2,7 @@ package com.example.tuitionfee;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.tuitionfee.model.Loan;
+import com.example.tuitionfee.remote.APIUtils;
 import com.example.tuitionfee.remote.LoanService;
 
 import java.text.ParseException;
@@ -56,13 +58,23 @@ public class LoanItemActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         String loandate = extras.getString("loandate");
-        String studentid = extras.getString("studentid");
-        String expireddate =extras.getString("expireddate");
+        System.out.println(loandate);
+        String studentid = extras.getString("studentId");
+
+        String expireddate =extras.getString("expiredDate");
+
+//        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+//        String format = formatter.format(expireddate);
+
+
+
+
+
         String amount =extras.getString("amount");
-        String loanstatus =extras.getString("loanstatus");
-        String amountreturned =extras.getString("amountreturned");
-        String loan_id =extras.getString("loan_id");
-        String bundleid =extras.getString("bundleid");
+        String loanstatus =extras.getString("loanStatus");
+        String amountreturned =extras.getString("amountReturned");
+        String loan_id =extras.getString("loanId");
+        String bundleid =extras.getString("bundleId");
 
         edtloanID.setText(loan_id);
         edtstudentId.setText(studentid);
@@ -79,8 +91,9 @@ public class LoanItemActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Long id = Long.parseLong(edtloanID.getText().toString().trim());
-                Date loandate = null;
-                Date expiredDate = null;
+                System.out.println("ooooooooooooooooooooooooooooooooooooo :" +id);
+                Date loandate  = new Date();
+                Date expiredDate = new Date();
                 try {
                     loandate = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(edtLoandate.getText().toString().trim());
                     expiredDate = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(edtExpireddate.getText().toString().trim());
@@ -92,6 +105,7 @@ public class LoanItemActivity extends AppCompatActivity {
                 Long amount =  Long.parseLong(edtAmount.getText().toString().trim());
                 String loanstatus = edtLoanstatus.getText().toString().trim();
                 Long amountreturned =  Long.parseLong(edtAmountreturned.getText().toString().trim());
+                loanChoose = new Loan();
                 loanChoose.setLoanId(id);
                 loanChoose.setAmount(amount);
                 loanChoose.setAmountReturned(amountreturned);
@@ -100,13 +114,35 @@ public class LoanItemActivity extends AppCompatActivity {
                 loanChoose.setStudentId(studentId);
                 loanChoose.setLoanStatus(loanstatus);
                 loanChoose.setLoanDate(loandate);
-                update(loanChoose);
+//                update(loanChoose);
+
+                if(loanService == null){
+                    loanService = APIUtils.getLoanService();
+                }
+                Call<Loan> call = loanService.updateLoan(loanChoose);
+                call.enqueue(new Callback<Loan>() {
+                    @Override
+                    public void onResponse(Call<Loan> call, Response<Loan> response) {
+                        if (response.isSuccessful()) {
+                            Toast.makeText(LoanItemActivity.this, "Loan update successfully!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Loan> call, Throwable t) {
+                        Log.e("ERROR: ", t.getMessage());
+                    }
+                });
             }
         });
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(loanService == null){
+                    loanService = APIUtils.getLoanService();
+                }
 
                 Call<Loan> call = loanService.deleteLoan( Long.parseLong(edtloanID.getText().toString().trim()));
                 call.enqueue(new Callback<Loan>() {
@@ -123,24 +159,35 @@ public class LoanItemActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-    }
-    public void update(Loan loan){
-        Call<Loan> call = loanService.updateLoan(loan);
-        call.enqueue(new Callback<Loan>() {
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<Loan> call, Response<Loan> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(LoanItemActivity.this, "loan update successfully!", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Loan> call, Throwable t) {
-                Log.e("ERROR: ", t.getMessage());
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ManageLoanActivity.class);
+                startActivity(intent);
             }
         });
+
+
+
+
     }
+//    public void update(Loan loan){
+//        if(loanService == null){
+//            loanService = APIUtils.getLoanService();
+//        }
+//        Call<Loan> call = loanService.updateLoan(loan);
+//        call.enqueue(new Callback<Loan>() {
+//            @Override
+//            public void onResponse(Call<Loan> call, Response<Loan> response) {
+//                if (response.isSuccessful()) {
+//                    Toast.makeText(LoanItemActivity.this, "Loan update successfully!", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Loan> call, Throwable t) {
+//                Log.e("ERROR: ", t.getMessage());
+//            }
+//        });
+//    }
 }

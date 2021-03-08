@@ -8,7 +8,7 @@ import retrofit2.http.Path;
 
 public interface AdminService {
 
-    @GET("admin/{id}")
-    Call<Admin> findByAccountId(@Path("id") Long id);
+    @GET("admin/{account_id}")
+    Call<Admin> findByAccountId(@Path("account_id") Long account_id);
 
 }
