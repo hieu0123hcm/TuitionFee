@@ -7,93 +7,214 @@
     android:orientation="vertical"
     tools:context=".LoanItemActivity">
 
-    <EditText
-        android:id="@+id/txtLoan_id"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:textColor="@color/blue_800"
-        android:layout_marginBottom="2dp"/>
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/txtStudentid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:textColor="@color/blue_800"
-        android:layout_marginBottom="2dp"/>
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="42dp"
+            android:text="Loan ID: "
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="18dp"/>
 
-    <EditText
-        android:id="@+id/txtLoandate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:textColor="@color/blue_800"
-        android:layout_marginBottom="2dp"/>
+        <EditText
+            android:id="@+id/txtLoan_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/blue_800"
+            android:layout_marginBottom="2dp"/>
 
-    <EditText
-        android:id="@+id/txtExpireddate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:textColor="@color/blue_800"
-        android:layout_marginBottom="2dp"/>
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/txtBundleid"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:textColor="@color/blue_800"
-        android:layout_marginBottom="2dp"/>
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/txtAmount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:textColor="@color/blue_800"
-        android:layout_marginBottom="2dp"/>
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="42dp"
+            android:text="Student ID: "
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="18dp"/>
 
-    <EditText
-        android:id="@+id/txtLoanstatus"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:textColor="@color/blue_800"
-        android:layout_marginBottom="2dp"/>
+        <EditText
+            android:id="@+id/txtStudentid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/blue_800"
+            android:layout_marginBottom="2dp"/>
 
-    <EditText
-        android:id="@+id/txtAmountreturned"
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:textColor="@color/blue_800"
-        android:layout_marginBottom="2dp"/>
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="42dp"
+            android:text="Loan Date: "
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="18dp"/>
+
+        <EditText
+            android:id="@+id/txtLoandate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/blue_800"
+            android:layout_marginBottom="2dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="42dp"
+            android:text="Expired Date: "
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="18dp"/>
+
+        <EditText
+            android:id="@+id/txtExpireddate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/blue_800"
+            android:layout_marginBottom="2dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="42dp"
+            android:text="Bundle ID: "
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="18dp"/>
+
+        <EditText
+            android:id="@+id/txtBundleid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/blue_800"
+            android:layout_marginBottom="2dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="42dp"
+            android:text="Amount: "
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="18dp"/>
+
+        <EditText
+            android:id="@+id/txtAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/blue_800"
+            android:layout_marginBottom="2dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="42dp"
+            android:text="Loan status: "
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="18dp"/>
+
+        <EditText
+            android:id="@+id/txtLoanstatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/blue_800"
+            android:layout_marginBottom="2dp"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="42dp"
+            android:text="Amount Returned: "
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="18dp"/>
+
+        <EditText
+            android:id="@+id/txtAmountreturned"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/blue_800"
+            android:layout_marginBottom="2dp"/>
+
+    </LinearLayout>
+
+
 
     <Button
         android:id="@+id/btnUpdate"

@@ -38,6 +38,10 @@ public class LoanItemActivity extends AppCompatActivity {
     Button btnDelete;
     Button btnBack;
 
+    Date expiredDate;
+    Date loanDate;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +62,6 @@ public class LoanItemActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         String loandate = extras.getString("loandate");
-        System.out.println(loandate);
         String studentid = extras.getString("studentId");
 
         String expireddate =extras.getString("expiredDate");
@@ -66,8 +69,17 @@ public class LoanItemActivity extends AppCompatActivity {
 //        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 //        String format = formatter.format(expireddate);
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd");
 
-
+        try {
+            expiredDate  = sdf.parse(expireddate);
+            loanDate = sdf.parse(expireddate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String formattedExpired = output.format(expiredDate);
+        String formattedLoanDate = output.format(loanDate);
 
 
         String amount =extras.getString("amount");
@@ -78,8 +90,8 @@ public class LoanItemActivity extends AppCompatActivity {
 
         edtloanID.setText(loan_id);
         edtstudentId.setText(studentid);
-        edtLoandate.setText(loandate);
-        edtExpireddate.setText(expireddate);
+        edtLoandate.setText(formattedLoanDate);
+        edtExpireddate.setText(formattedExpired);
         edtBundleid.setText(bundleid);
         edtAmount.setText(amount);
         edtLoanstatus.setText(loanstatus);
@@ -92,14 +104,17 @@ public class LoanItemActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Long id = Long.parseLong(edtloanID.getText().toString().trim());
                 System.out.println("ooooooooooooooooooooooooooooooooooooo :" +id);
-                Date loandate  = new Date();
-                Date expiredDate = new Date();
-                try {
-                    loandate = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(edtLoandate.getText().toString().trim());
-                    expiredDate = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(edtExpireddate.getText().toString().trim());
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+//                Date loandate  = new Date();
+//                Date expiredDate = new Date();
+//                try {
+//                    loandate = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(edtLoandate.getText().toString().trim());
+//                    expiredDate = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(edtExpireddate.getText().toString().trim());
+//                } catch (ParseException e) {
+//                    e.printStackTrace();
+//                }
+                String loanDate = edtLoandate.getText().toString().trim();
+                String  expiredDate = edtExpireddate.getText().toString().trim();
+
                 String studentId = edtstudentId.getText().toString().trim();
                 Long bundleid =  Long.parseLong(edtBundleid.getText().toString().trim());
                 Long amount =  Long.parseLong(edtAmount.getText().toString().trim());

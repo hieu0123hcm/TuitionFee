@@ -50,7 +50,7 @@ public class SubjectItemActivity extends AppCompatActivity {
         txtDescription = findViewById(R.id.txtDescription);
         btnUpdate = findViewById(R.id.btnUpdate);
         btnDelete = findViewById(R.id.btnDelete);
-        btnBack = findViewById(R.id.btnDelete);
+        btnBack = findViewById(R.id.btnBack);
 
 
         Bundle extras = getIntent().getExtras();

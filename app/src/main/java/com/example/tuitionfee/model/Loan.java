@@ -11,13 +11,13 @@ public class Loan {
     private Long loanId;
 
     @SerializedName("loanDate")
-    private Date loanDate;
+    private String loanDate;
 
     @SerializedName("studentId")
     private String studentId;
 
     @SerializedName("expiredDate")
-    private Date expiredDate;
+    private String expiredDate;
 
     @SerializedName("bundleId")
     private Long bundleId;
@@ -31,7 +31,7 @@ public class Loan {
     @SerializedName("amountReturned")
     private Long amountReturned;
 
-    public Loan(Long loanId, Date loanDate, String studentId, Date expiredDate, Long bundleId, Long amount, String loanStatus, Long amountReturned) {
+    public Loan(Long loanId, String loanDate, String studentId, String expiredDate, Long bundleId, Long amount, String loanStatus, Long amountReturned) {
         this.loanId = loanId;
         this.loanDate = loanDate;
         this.studentId = studentId;
@@ -53,11 +53,11 @@ public class Loan {
         this.loanId = loanId;
     }
 
-    public Date getLoanDate() {
+    public String getLoanDate() {
         return loanDate;
     }
 
-    public void setLoanDate(Date loanDate) {
+    public void setLoanDate(String loanDate) {
         this.loanDate = loanDate;
     }
 
@@ -69,11 +69,11 @@ public class Loan {
         this.studentId = studentId;
     }
 
-    public Date getExpiredDate() {
+    public String getExpiredDate() {
         return expiredDate;
     }
 
-    public void setExpiredDate(Date expiredDate) {
+    public void setExpiredDate(String expiredDate) {
         this.expiredDate = expiredDate;
     }
 

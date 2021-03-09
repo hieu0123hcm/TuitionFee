@@ -71,14 +71,16 @@ public class AddLoanActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Long id = Long.parseLong(edtloanID.getText().toString().trim());
-//                Date loandate = null;
-//                Date expiredDate = null;
-                try {
-                    loandate = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(edtLoandate.getText().toString().trim());
-                     expiredDate = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(edtExpireddate.getText().toString().trim());
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+
+//                try {
+//                    loandate = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(edtLoandate.getText().toString().trim());
+//                     expiredDate = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(edtExpireddate.getText().toString().trim());
+//                } catch (ParseException e) {
+//                    e.printStackTrace();
+//                }
+                String loanDate = edtLoandate.getText().toString().trim();
+                String  expiredDate = edtExpireddate.getText().toString().trim();
+
                 String studentId = edtstudentId.getText().toString().trim();
                 Long bundleid =  Long.parseLong(edtBundleid.getText().toString().trim());
                 Long amount =  Long.parseLong(edtAmount.getText().toString().trim());
@@ -100,7 +102,7 @@ public class AddLoanActivity extends AppCompatActivity {
                 System.out.println("studentId"+studentId);
                 loanAdd.setLoanStatus(loanstatus);
                 System.out.println("loanstatus"+loanstatus);
-                loanAdd.setLoanDate(loandate);
+                loanAdd.setLoanDate(loanDate);
                 System.out.println("loandate"+loandate);
                 addLoan(loanAdd);
 
