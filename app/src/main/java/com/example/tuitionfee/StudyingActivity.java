@@ -35,6 +35,14 @@ public class StudyingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //getRole, accountID
+//        Bundle extras = getIntent().getExtras();
+//        String account_id = extras.getString("account_id");
+//        String role = extras.getString("role").trim();
+
+       String account_id = "12";
+        String role = "admin";
+
         listView = (ListView) findViewById(R.id.studyingListView);
         studyingService = APIUtils.getStudyingService();
 
@@ -67,12 +75,18 @@ public class StudyingActivity extends AppCompatActivity {
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                if(role.equals("student")) {
+                    Intent intent = new Intent(getApplicationContext(), ProfilestudentActivity.class);
+                    intent.putExtra("role",role);
+                    intent.putExtra("account_id",account_id);
+                    startActivity(intent);
+                }else if(role.equals("admin")){
+                    Intent intent = new Intent(getApplicationContext(), ProfileAdminActivity.class);
+                    intent.putExtra("role",role);
+                    intent.putExtra("account_id",account_id);
+                    startActivity(intent);
+                }
 
-                Long id = Long.valueOf(15);
-               intent.putExtra("role","student");
-                intent.putExtra("account_id",id);
-                startActivity(intent);
             }
         });
 

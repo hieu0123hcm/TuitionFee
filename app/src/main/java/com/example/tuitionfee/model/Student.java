@@ -24,9 +24,9 @@ public class Student {
     private Date birthdate;
 
     @SerializedName("account_id")
-    private Long account_id;
+    private String account_id;
 
-    public Student(String id, String fullname, String major, String semester, Date birthdate, Long account_id) {
+    public Student(String id, String fullname, String major, String semester, Date birthdate, String account_id) {
         this.id = id;
         this.fullname = fullname;
         this.major = major;
@@ -78,11 +78,11 @@ public class Student {
         this.birthdate = birthdate;
     }
 
-    public Long getAccount_id() {
+    public String getAccount_id() {
         return account_id;
     }
 
-    public void setAccount_id(Long account_id) {
+    public void setAccount_id(String account_id) {
         this.account_id = account_id;
     }
 }

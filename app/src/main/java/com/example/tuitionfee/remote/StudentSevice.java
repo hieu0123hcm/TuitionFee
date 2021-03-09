@@ -9,5 +9,5 @@ import retrofit2.http.Path;
 public interface StudentSevice {
 
     @GET("student/{account_id}")
-    Call<Student> findByAccountId(@Path("account_id") Long account_id);
+    Call<Student> findByAccountId(@Path("account_id") String account_id);
 }
