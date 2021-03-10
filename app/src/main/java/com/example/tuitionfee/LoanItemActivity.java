@@ -74,7 +74,7 @@ public class LoanItemActivity extends AppCompatActivity {
 
         try {
             expiredDate  = sdf.parse(expireddate);
-            loanDate = sdf.parse(expireddate);
+            loanDate = sdf.parse(loandate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
