@@ -2,9 +2,8 @@ package com.example.tuitionfee;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,10 +26,11 @@ public class StudyingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_studying);
 
         listView = (ListView) findViewById(R.id.studyingListView);
         studyingService = APIUtils.getStudyingService();
+
 
         getStudyingList();
 
@@ -43,8 +43,12 @@ public class StudyingActivity extends AppCompatActivity {
             public void onResponse(Call<List<Studying>> call, Response<List<Studying>> response) {
                 if(response.isSuccessful()){
                     studyingList = response.body();
-                    listView.setAdapter(new StudyingCustomListAdapter(StudyingActivity.this, studyingList));
-                    Toast.makeText(StudyingActivity.this,"Success",Toast.LENGTH_SHORT).show();
+                    if(studyingList != null){
+
+                        listView.setAdapter(new StudyingCustomListAdapter(StudyingActivity.this, studyingList));
+                        Toast.makeText(StudyingActivity.this,"Success",Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             }
 

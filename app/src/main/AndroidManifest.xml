@@ -11,13 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TuitionFee">
-        <activity android:name=".StudyingItemActivity"></activity>
-        <activity android:name=".StudyingActivity">
+        <activity android:name=".GetLoanListActivity">
+
+        </activity>
+        <activity android:name=".AdminNotificationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".StudyingItemActivity" />
+        <activity android:name=".StudyingActivity">
+
         </activity>
     </application>
 

@@ -18,7 +18,7 @@
         android:textStyle="bold"
         android:textAlignment="center"
         android:textColor="@color/blue_800"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="50dp"/>
 
     <ListView
         android:id="@+id/studyingListView"

@@ -11,9 +11,9 @@ public class Studying {
 
     @SerializedName("subjectID")
     private String subjectID;
-    @SerializedName("studentid")
+    @SerializedName("studentID")
     private String studentID;
-    @SerializedName("studystatus")
+    @SerializedName("studyStatus")
     private String studyStatus;
     @SerializedName("subject")
     private String subject;

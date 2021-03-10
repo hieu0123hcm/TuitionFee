@@ -5,27 +5,94 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".StudyingItemActivity">
+    tools:context=".StudyingItemActivity"
+
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
 
     <TextView
-        android:id="@+id/txtStudyingID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:text="Re-Study Courses"
         android:textSize="25dp"
         android:textStyle="bold"
         android:textAlignment="center"
         android:textColor="@color/blue_800"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="50dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Subject ID"/>
     <TextView
         android:id="@+id/txtSubjectID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textSize="25dp"
-        android:textStyle="bold"
-        android:textAlignment="center"
         android:textColor="@color/blue_800"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="15dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Subject "/>
+    <TextView
+        android:id="@+id/txtSubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="25dp"
+        android:textColor="@color/blue_800"
+        android:layout_marginBottom="15dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Semester No."/>
+    <TextView
+        android:id="@+id/txtSemesterNo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textColor="@color/blue_800"
+        android:layout_marginBottom="15dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tuition Fee"/>
+    <TextView
+        android:id="@+id/txtTuitionFee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textColor="@color/blue_800"
+        android:layout_marginBottom="15dp"/>
+
+    <GridLayout
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnRequest"
+            android:text="Request"
+            android:onClick="createRequestToAdmin"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:onClick="getBackToStudyingActivity"
+            android:text="Back" />
+    </GridLayout>
+
+
+
+
+
 
 </LinearLayout>

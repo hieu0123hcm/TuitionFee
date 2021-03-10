@@ -58,6 +58,8 @@ public class StudyingCustomListAdapter extends BaseAdapter {
                     Intent intent = new Intent(context, StudyingItemActivity.class);
                     intent.putExtra("studying_id", String.valueOf(currentStudying.getId()));
                     intent.putExtra("subject_id", currentStudying.getSubjectID());
+                    intent.putExtra("semesterno", currentStudying.getSemesterNo());
+
                     context.startActivity(intent);
                 }
             });
