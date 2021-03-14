@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "765021775020",
+    "firebase_url": "https://auth-b51eb-default-rtdb.firebaseio.com",
+    "project_id": "auth-b51eb",
+    "storage_bucket": "auth-b51eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:765021775020:android:fb2422ef96144a2e1aab09",
+        "android_client_info": {
+          "package_name": "com.example.tuitionfee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "765021775020-2mitivvsiecsnfuvs86p19de47b4dqob.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtsPLkGweEQdPBUQYmStLNxgbT9ExOcQM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "765021775020-2mitivvsiecsnfuvs86p19de47b4dqob.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,27 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".adminActivities.AdminNotificationActivity"
-    android:orientation="vertical"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp">
+    tools:context=".studentActivities.StudentMenuActivity"
+    android:orientation="vertical">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Notification"
+        android:text="Student"
         android:textSize="25dp"
         android:textStyle="bold"
         android:textAlignment="center"
         android:textColor="@color/blue_800"
         android:layout_marginBottom="50dp"/>
-    <TextView
-        android:id="@+id/txtContent"
-        android:layout_width="match_parent"
+
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Click to approve"/>
-    <ListView
-        android:id="@+id/notificationListView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:text="View Re-study Course"
+        android:onClick="goToViewReStudyCourse"
+        android:layout_gravity="center"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Loans"
+        android:onClick="goToGetLoanList"
+        android:layout_gravity="center"/>
+
 </LinearLayout>

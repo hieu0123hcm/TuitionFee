@@ -1,4 +1,4 @@
-package com.example.tuitionfee;
+package com.example.tuitionfee.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,15 +7,16 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.tuitionfee.R;
 import com.example.tuitionfee.model.Loan;
 
 import java.util.List;
 
-public class LoanCustomListAdapter extends BaseAdapter {
+public class LoanCustomListAdapterForStudent extends BaseAdapter {
     private Context context;
     private List<Loan> loanList;
 
-    public LoanCustomListAdapter(Context context, List<Loan> loanList) {
+    public LoanCustomListAdapterForStudent(Context context, List<Loan> loanList) {
         this.context = context;
         this.loanList = loanList;
     }

@@ -1,4 +1,4 @@
-package com.example.tuitionfee;
+package com.example.tuitionfee.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.tuitionfee.R;
 import com.example.tuitionfee.model.Notification;
 import com.example.tuitionfee.model.Studying;
 

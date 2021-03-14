@@ -16,14 +16,14 @@ public class Notification {
     @SerializedName("message")
     private String message;
     @SerializedName("created_on")
-    private Date created_on;
+    private String created_on;
     @SerializedName("adminRead")
     private boolean isAdminRead;
 
     public Notification() {
     }
 
-    public Notification(Long id, String sendid, String message, Date created_on, boolean isAdminRead) {
+    public Notification(Long id, String sendid, String message, String created_on, boolean isAdminRead) {
         this.id = id;
         this.sendid = sendid;
         this.message = message;
@@ -55,11 +55,11 @@ public class Notification {
         this.message = message;
     }
 
-    public Date getCreated_on() {
+    public String getCreated_on() {
         return created_on;
     }
 
-    public void setCreated_on(Date created_on) {
+    public void setCreated_on(String created_on) {
         this.created_on = created_on;
     }
 

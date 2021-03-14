@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".adminActivities.LoanManage.ManageLoanActivity">
+
+    <TextView
+        android:id="@+id/txtManageLoan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Management Loan"
+        android:layout_gravity="center"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="@color/blue_800"
+        android:layout_marginBottom="5dp"
+        />
+
+
+    <EditText
+        android:id="@+id/edtSearchLoan"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="137dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Search" />
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="137dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Add Loan" />
+
+    <ListView
+        android:id="@+id/lstLoan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+</LinearLayout>

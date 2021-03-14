@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GetDetailLoanActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Loan Detail"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="@color/blue_800"
+        android:layout_marginBottom="50dp"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="42dp"
+            android:text="Student ID: "
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="18dp"/>
+
+        <EditText
+            android:id="@+id/txtStudentid1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:editable="false"
+            android:textColor="@color/blue_800"
+            android:layout_marginBottom="2dp"/>
+
+    </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="42dp"
+            android:text="Expired Date: "
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="18dp"/>
+
+        <EditText
+            android:id="@+id/txtExpireddate1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:editable="false"
+            android:textColor="@color/blue_800"
+            android:layout_marginBottom="2dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="42dp"
+            android:text="Bundle ID: "
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="18dp"/>
+
+        <EditText
+            android:id="@+id/txtBundleid1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:editable="false"
+            android:textColor="@color/blue_800"
+            android:layout_marginBottom="2dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="42dp"
+            android:text="Amount: "
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="18dp"/>
+
+        <EditText
+            android:id="@+id/txtAmount1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/blue_800"
+            android:layout_marginBottom="2dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="42dp"
+            android:text="Loan status: "
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="18dp"/>
+
+        <EditText
+            android:id="@+id/txtLoanstatus1"
+            android:editable="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/blue_800"
+            android:layout_marginBottom="2dp"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="42dp"
+            android:text="Amount Returned: "
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="18dp"/>
+
+        <EditText
+            android:id="@+id/txtAmountreturned1"
+            android:editable="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/blue_800"
+            android:layout_marginBottom="2dp"/>
+
+    </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Transactions"
+            android:layout_gravity="center"
+            android:textColor="@color/blue_800"
+            android:textAlignment="center"
+            android:background="@color/orange_500"
+            />
+    <ListView
+       android:background="@color/blue_700"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lvTransaction"
+        />
+
+</LinearLayout>

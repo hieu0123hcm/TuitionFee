@@ -1,10 +1,9 @@
-package com.example.tuitionfee;
+package com.example.tuitionfee.adminActivities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,6 +11,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tuitionfee.R;
+import com.example.tuitionfee.adapter.NotificationCustomListAdapter;
 import com.example.tuitionfee.model.Notification;
 import com.example.tuitionfee.model.Payment;
 import com.example.tuitionfee.model.Studying;
@@ -20,16 +21,12 @@ import com.example.tuitionfee.remote.NotificationService;
 import com.example.tuitionfee.remote.PaymentService;
 import com.example.tuitionfee.remote.StudyingService;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Body;
 
 public class AdminNotificationActivity extends AppCompatActivity {
     NotificationService notificationService;

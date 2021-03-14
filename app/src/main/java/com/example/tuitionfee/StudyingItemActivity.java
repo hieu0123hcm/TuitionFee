@@ -22,6 +22,8 @@ import com.example.tuitionfee.remote.StudyingService;
 import com.example.tuitionfee.remote.SubjectService;
 
 
+import java.text.SimpleDateFormat;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,8 +37,9 @@ public class StudyingItemActivity extends AppCompatActivity {
     Subject subject = new Subject();
     Payment payment = new Payment();
     private Long paymentID = Long.getLong("0");
-
+    String account_id;
     Notification notification = new Notification();
+    String studentID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +53,9 @@ public class StudyingItemActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         String studyingID = extras.getString("studying_id");
-
-
+        studentID = extras.getString("studentID");
+        account_id = extras.getString("account_id");
+        System.out.println("StudyingItemAc" + extras.getString("account_id"));
         getStudyingByStudyingID(Long.parseLong(studyingID));
     }
 
@@ -165,9 +169,15 @@ public class StudyingItemActivity extends AppCompatActivity {
     public void createRequestToAdmin(View view) {
 
 
-        notification.setSendid("1");
+        notification.setSendid(account_id);
+        System.out.println("last"  +account_id);
         notification.setAdminRead(false);
         System.out.println(notification.getSendid());
+        java.util.Date date=new java.util.Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String format = formatter.format(date);
+        System.out.println(date);
+        notification.setCreated_on(format);
 
 
 
@@ -201,6 +211,9 @@ public class StudyingItemActivity extends AppCompatActivity {
 
     public void getBackToStudyingActivity(View view) {
         Intent intent = new Intent(this, StudyingActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("studentID", studentID);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 

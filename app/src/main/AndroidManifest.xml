@@ -11,20 +11,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TuitionFee">
-        <activity android:name=".GetLoanListActivity">
-
-        </activity>
-        <activity android:name=".AdminNotificationActivity">
+        <activity android:name=".GetDetailLoanActivity"></activity>
+        <activity android:name=".studentActivities.StudentMenuActivity" />
+        <activity android:name=".adminActivities.AdminMenuActivity" />
+        <activity android:name=".GetLoanListActivity" />
+        <activity android:name=".adminActivities.AdminNotificationActivity" />
+        <activity android:name=".StudyingItemActivity" />
+        <activity android:name=".StudyingActivity" />
+        <activity android:name=".ForgotPassword" />
+        <activity android:name=".adminActivities.StudentManage.DetailActivity" />
+        <activity android:name=".adminActivities.StudentManage.StudentManagementActivity" />
+        <activity android:name=".adminActivities.SubjectManage.ManageSubjectActivity" />
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StudyingItemActivity" />
-        <activity android:name=".StudyingActivity">
-
-        </activity>
+        <activity android:name=".adminActivities.SubjectManage.AddSubjectActivity" />
+        <activity android:name=".adminActivities.SubjectManage.SubjectItemActivity" />
+        <activity android:name=".adminActivities.LoanManage.LoanItemActivity" />
+        <activity android:name=".adminActivities.LoanManage.AddLoanActivity" />
+        <activity android:name=".adminActivities.LoanManage.ManageLoanActivity" />
+        <activity android:name=".adminActivities.ShowProfile.ProfileAdminActivity" />
     </application>
 
 </manifest>

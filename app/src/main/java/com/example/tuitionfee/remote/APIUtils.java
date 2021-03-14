@@ -30,5 +30,19 @@ public class APIUtils {
         public static LoanService getLoanService(){
             return RetrofitClient.getClient(API_URL).create(LoanService.class);
         }
+
+    public static StudentService getStudentService(){
+        return RetrofitClient.getClient(API_URL).create(StudentService.class);
+    }
+
+    public static AccountService getAccountService(){
+        return RetrofitClient.getClient(API_URL).create(AccountService.class);
+    }
+    public static AdminService getAdminService() {
+        return RetrofitClient.getClient(API_URL).create(AdminService.class);
+    }
+    public static TransactionService getTransactionService() {
+        return RetrofitClient.getClient(API_URL).create(TransactionService.class);
+    }
     }
 

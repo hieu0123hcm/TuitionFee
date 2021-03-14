@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Subject {
-    @SerializedName("id")
+    @SerializedName("subjectid")
     @Expose
     private String subjectid;
     @SerializedName("tuitionFee")
