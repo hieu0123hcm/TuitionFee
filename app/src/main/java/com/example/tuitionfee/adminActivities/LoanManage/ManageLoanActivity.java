@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tuitionfee.R;
 import com.example.tuitionfee.adapter.LoanCustomListAdapter;
+import com.example.tuitionfee.adapter.SubjectCustomListAdapter;
+import com.example.tuitionfee.adminActivities.SubjectManage.ManageSubjectActivity;
 import com.example.tuitionfee.model.Loan;
 import com.example.tuitionfee.remote.APIUtils;
 import com.example.tuitionfee.remote.LoanService;
@@ -54,9 +56,14 @@ public class ManageLoanActivity extends AppCompatActivity {
             public void onResponse(Call<List<Loan>> call, Response<List<Loan>> response) {
                 if (response.isSuccessful()) {
                     listLoan = response.body();
-                    System.out.println(listLoan.get(0));
-                    listView.setAdapter(new LoanCustomListAdapter(ManageLoanActivity.this, listLoan));
-                    Toast.makeText(ManageLoanActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                    if(listLoan != null){
+                        System.out.println(listLoan.get(0));
+                        listView.setAdapter(new LoanCustomListAdapter(ManageLoanActivity.this, listLoan));
+                        Toast.makeText(ManageLoanActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(ManageLoanActivity.this, "This list is empty", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             }
 
@@ -84,7 +91,7 @@ public class ManageLoanActivity extends AppCompatActivity {
     }
 
     private void getLoan() {
-        listLoan.isEmpty();
+      //  listLoan.isEmpty();
         String id = edtSearch.getText().toString().trim();
         if (loanService == null){
             loanService = APIUtils.getLoanService();
@@ -95,9 +102,14 @@ public class ManageLoanActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Loan>> call, Response<List<Loan>> response) {
                 listLoan = response.body();
-                System.out.println(listLoan);
-                listView.setAdapter(new LoanCustomListAdapter(ManageLoanActivity.this, listLoan));
-                Toast.makeText(ManageLoanActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                if(response.body() != null){
+                    System.out.println(listLoan);
+                    listView.setAdapter(new LoanCustomListAdapter(ManageLoanActivity.this, listLoan));
+                    Toast.makeText(ManageLoanActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(ManageLoanActivity.this, "Wrong ID", Toast.LENGTH_SHORT).show();
+                }
+
             }
 
             @Override

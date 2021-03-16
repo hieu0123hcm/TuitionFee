@@ -57,7 +57,13 @@ public class AddSubjectActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String subjectId = edtsubjectID.getText().toString().trim();
                 String subjectName = edtsubjectName.getText().toString().trim();
-                Long tuitionFee = Long.parseLong(edtTuitionfee.getText().toString().trim());
+                Long tuitionFee = Long.parseLong("0");;
+                try {
+
+                    tuitionFee = Long.parseLong(edtTuitionfee.getText().toString().trim());
+                }catch ( Exception e){
+                    Toast.makeText(AddSubjectActivity.this, "Please input right format!", Toast.LENGTH_SHORT).show();
+                }
                 String description = edtDescription.getText().toString().trim();
 
                 Subject subjectAdd = new Subject();

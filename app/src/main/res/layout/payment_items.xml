@@ -8,7 +8,7 @@
 
 
     <TextView
-        android:id="@+id/txtSendID"
+        android:id="@+id/txtPayID"
         android:layout_width="197dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -21,17 +21,10 @@
         android:textFontWeight="@android:integer/config_mediumAnimTime"
         android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_x="34dp"
-        android:layout_y="30dp"
-        android:text="Restudy request(StudyingID - PaymentID):"
-        android:textColor="@color/blue_800" />
+
 
     <TextView
-        android:id="@+id/txtMessage"
+        android:id="@+id/txtStudentIDPay"
         android:layout_width="197dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -40,7 +33,16 @@
         android:textColor="@color/blue_800" />
 
     <TextView
-        android:id="@+id/txtNotiDate"
+        android:id="@+id/txtAmmountPay"
+        android:layout_width="197dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_x="34dp"
+        android:layout_y="50dp"
+        android:textColor="@color/blue_800" />
+
+    <TextView
+        android:id="@+id/txtPayDate"
         android:layout_width="197dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"

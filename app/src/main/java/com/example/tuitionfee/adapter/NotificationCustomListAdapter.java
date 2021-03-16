@@ -45,8 +45,9 @@ public class NotificationCustomListAdapter extends BaseAdapter {
         Notification currentNotification = (Notification) getItem(position);
         TextView txtSendID = convertView.findViewById(R.id.txtSendID);
         TextView txtMessage = convertView.findViewById(R.id.txtMessage);
+        TextView txtDate = convertView.findViewById(R.id.txtNotiDate);
 
-
+        txtDate.setText(currentNotification.getCreated_on());
         txtSendID.setText(currentNotification.getSendid());
         txtMessage.setText(currentNotification.getMessage());
         return convertView;

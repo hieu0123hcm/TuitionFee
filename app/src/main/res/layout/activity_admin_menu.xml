@@ -8,8 +8,8 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
         android:text="Admin"
         android:textSize="25dp"
@@ -18,29 +18,34 @@
         android:textColor="@color/blue_800"
         android:layout_marginBottom="50dp"/>
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
         android:text="Manage Student"
-        android:onClick="goToManageStudent"/>
+        android:onClick="goToManageStudent"
+        android:layout_gravity="center"/>
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
         android:text="Manage Loan"
-        android:onClick="goToManageLoan"/>
+        android:onClick="goToManageLoan"
+        android:layout_gravity="center"/>
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
         android:text="Manage Subject"
-        android:onClick="goToManageSubject"/>
+        android:onClick="goToManageSubject"
+        android:layout_gravity="center"/>
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
         android:text="View Requests"
-        android:onClick="goToViewRequests"/>
+        android:onClick="goToViewRequests"
+        android:layout_gravity="center"/>
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
         android:text="Show Profile"
-        android:onClick="showProfile"/>
+        android:onClick="showProfile"
+        android:layout_gravity="center"/>
 
 </LinearLayout>

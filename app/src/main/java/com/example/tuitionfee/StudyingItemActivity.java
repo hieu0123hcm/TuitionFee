@@ -185,6 +185,7 @@ public class StudyingItemActivity extends AppCompatActivity {
         payment.setApproval(false);
         payment.setSemester(studying.getSemesterNo());
         payment.setStudentID(studying.getStudentID());
+        payment.setCreated_on(format);
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

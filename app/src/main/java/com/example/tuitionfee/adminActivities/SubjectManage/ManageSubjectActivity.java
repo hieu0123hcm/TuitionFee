@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tuitionfee.R;
 import com.example.tuitionfee.adapter.SubjectCustomListAdapter;
+import com.example.tuitionfee.adminActivities.LoanManage.ManageLoanActivity;
 import com.example.tuitionfee.model.Subject;
 import com.example.tuitionfee.remote.APIUtils;
 import com.example.tuitionfee.remote.SubjectService;
@@ -73,6 +74,8 @@ public class ManageSubjectActivity extends AppCompatActivity {
                             listSubject.add(subjectFind);
                             listView.setAdapter(new SubjectCustomListAdapter(ManageSubjectActivity.this, listSubject));
                             Toast.makeText(ManageSubjectActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(ManageSubjectActivity.this, "Wrong ID", Toast.LENGTH_SHORT).show();
                         }
 
                     }

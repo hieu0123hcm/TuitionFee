@@ -1,9 +1,12 @@
 package com.example.tuitionfee.adminActivities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.tuitionfee.LoginActivity;
@@ -12,6 +15,7 @@ import com.example.tuitionfee.adminActivities.LoanManage.ManageLoanActivity;
 import com.example.tuitionfee.adminActivities.ShowProfile.ProfileAdminActivity;
 import com.example.tuitionfee.adminActivities.StudentManage.StudentManagementActivity;
 import com.example.tuitionfee.adminActivities.SubjectManage.ManageSubjectActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class AdminMenuActivity extends AppCompatActivity {
     private String account_id;
@@ -24,6 +28,24 @@ public class AdminMenuActivity extends AppCompatActivity {
         account_id = extras.getString("key");
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_option,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case R.id.mLogout:{
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(AdminMenuActivity.this, LoginActivity.class));
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void goToViewRequests(View view) {

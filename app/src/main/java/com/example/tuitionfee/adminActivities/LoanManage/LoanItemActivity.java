@@ -73,6 +73,9 @@ public class LoanItemActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd");
 
+        expiredDate = new Date();
+        loanDate = new Date();
+
         try {
             expiredDate  = sdf.parse(expireddate);
             loanDate = sdf.parse(loandate);

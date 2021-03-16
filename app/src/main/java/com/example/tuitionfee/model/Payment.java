@@ -17,7 +17,7 @@ public class Payment {
     private String studentID;
 
     @SerializedName("created_on")
-    private Date created_on;
+    private String created_on;
 
     @SerializedName("amount")
     private Long amount;
@@ -32,7 +32,7 @@ public class Payment {
     public Payment() {
     }
 
-    public Payment(Long payment_id, int semester, String studentID, Date created_on, Long amount, Boolean approval) {
+    public Payment(Long payment_id, int semester, String studentID, String created_on, Long amount, Boolean approval) {
         this.payment_id = payment_id;
         this.semester = semester;
         this.studentID = studentID;
@@ -69,11 +69,11 @@ public class Payment {
         this.studentID = studentID;
     }
 
-    public Date getCreated_on() {
+    public String getCreated_on() {
         return created_on;
     }
 
-    public void setCreated_on(Date created_on) {
+    public void setCreated_on(String created_on) {
         this.created_on = created_on;
     }
 
