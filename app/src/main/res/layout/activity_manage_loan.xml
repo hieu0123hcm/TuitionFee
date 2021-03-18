@@ -34,12 +34,12 @@
         android:layout_gravity="center"
         android:text="Search" />
 
-    <Button
-        android:id="@+id/btnAdd"
-        android:layout_width="137dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Add Loan" />
+<!--    <Button-->
+<!--        android:id="@+id/btnAdd"-->
+<!--        android:layout_width="137dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:text="Add Loan" />-->
 
     <ListView
         android:id="@+id/lstLoan"

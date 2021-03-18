@@ -42,7 +42,7 @@ public class ManageLoanActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.lstLoan);
         listView.setAdapter(null);
-        btnAdd = (Button) findViewById(R.id.btnAdd);
+        //btnAdd = (Button) findViewById(R.id.btnAdd);
         edtSearch = (EditText) findViewById(R.id.edtSearchLoan);
 
         //Get List
@@ -73,13 +73,13 @@ public class ManageLoanActivity extends AppCompatActivity {
             }
         });
 
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddLoanActivity.class);
-                startActivity(intent);
-            }
-        });
+//        btnAdd.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), AddLoanActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         btnSearch = (Button) findViewById(R.id.btnSearch);
         btnSearch.setOnClickListener(new View.OnClickListener() {

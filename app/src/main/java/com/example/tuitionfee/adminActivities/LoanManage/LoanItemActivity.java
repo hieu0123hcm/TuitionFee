@@ -58,15 +58,16 @@ public class LoanItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loan_item);
 
-        btnUpdate = (Button) findViewById(R.id.btnUpdate);
-        btnDelete = (Button) findViewById(R.id.btnDelete);
+       // btnUpdate = (Button) findViewById(R.id.btnUpdate);
+       // btnDelete = (Button) findViewById(R.id.btnDelete);
         btnBack = (Button) findViewById(R.id.btnBack);
-
+        DecimalFormat formatter = new DecimalFormat("###,###,###");
         edtloanID = (EditText) findViewById(R.id.txtLoan_id);
         edtstudentId = (EditText) findViewById(R.id.txtStudentid);
         edtLoandate = (EditText) findViewById(R.id.txtLoandate);
         edtExpireddate = (EditText) findViewById(R.id.txtExpireddate);
         edtBundleid = (EditText) findViewById(R.id.txtBundleid);
+
         edtAmount = (EditText) findViewById(R.id.txtAmount);
         edtLoanstatus = (EditText) findViewById(R.id.txtLoanstatus);
         edtAmountreturned = (EditText) findViewById(R.id.txtAmountreturned);
@@ -108,84 +109,84 @@ public class LoanItemActivity extends AppCompatActivity {
         edtLoandate.setText(formattedLoanDate);
         edtExpireddate.setText(formattedExpired);
         edtBundleid.setText(bundleid);
-        edtAmount.setText(amount);
+        edtAmount.setText(formatter.format(Long.parseLong(amount)));
         edtLoanstatus.setText(loanstatus);
-        edtAmountreturned.setText(amountreturned);
+        edtAmountreturned.setText(formatter.format(Long.parseLong(amountreturned)));
 
 
-        btnUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Long id = Long.parseLong(edtloanID.getText().toString().trim());
-//                Date loandate  = new Date();
-//                Date expiredDate = new Date();
-//                try {
-//                    loandate = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(edtLoandate.getText().toString().trim());
-//                    expiredDate = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(edtExpireddate.getText().toString().trim());
-//                } catch (ParseException e) {
-//                    e.printStackTrace();
+//        btnUpdate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Long id = Long.parseLong(edtloanID.getText().toString().trim());
+////                Date loandate  = new Date();
+////                Date expiredDate = new Date();
+////                try {
+////                    loandate = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(edtLoandate.getText().toString().trim());
+////                    expiredDate = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(edtExpireddate.getText().toString().trim());
+////                } catch (ParseException e) {
+////                    e.printStackTrace();
+////                }
+//                String loanDate = edtLoandate.getText().toString().trim();
+//                String expiredDate = edtExpireddate.getText().toString().trim();
+//
+//                String studentId = edtstudentId.getText().toString().trim();
+//                Long bundleid = Long.parseLong(edtBundleid.getText().toString().trim());
+//                Long amount = Long.parseLong(edtAmount.getText().toString().trim());
+//                String loanstatus = edtLoanstatus.getText().toString().trim();
+//                Long amountreturned = Long.parseLong(edtAmountreturned.getText().toString().trim());
+//                loanChoose = new Loan();
+//                loanChoose.setLoanId(id);
+//                loanChoose.setAmount(amount);
+//                loanChoose.setAmountReturned(amountreturned);
+//                loanChoose.setBundleId(bundleid);
+//                loanChoose.setExpiredDate(expiredDate);
+//                loanChoose.setStudentId(studentId);
+//                loanChoose.setLoanStatus(loanstatus);
+//                loanChoose.setLoanDate(loandate);
+////                update(loanChoose);
+//
+//                if (loanService == null) {
+//                    loanService = APIUtils.getLoanService();
 //                }
-                String loanDate = edtLoandate.getText().toString().trim();
-                String expiredDate = edtExpireddate.getText().toString().trim();
+//                Call<Loan> call = loanService.updateLoan(loanChoose);
+//                call.enqueue(new Callback<Loan>() {
+//                    @Override
+//                    public void onResponse(Call<Loan> call, Response<Loan> response) {
+//                        if (response.isSuccessful()) {
+//                            Toast.makeText(LoanItemActivity.this, "Loan update successfully!", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<Loan> call, Throwable t) {
+//                        Log.e("ERROR: ", t.getMessage());
+//                    }
+//                });
+//            }
+//        });
 
-                String studentId = edtstudentId.getText().toString().trim();
-                Long bundleid = Long.parseLong(edtBundleid.getText().toString().trim());
-                Long amount = Long.parseLong(edtAmount.getText().toString().trim());
-                String loanstatus = edtLoanstatus.getText().toString().trim();
-                Long amountreturned = Long.parseLong(edtAmountreturned.getText().toString().trim());
-                loanChoose = new Loan();
-                loanChoose.setLoanId(id);
-                loanChoose.setAmount(amount);
-                loanChoose.setAmountReturned(amountreturned);
-                loanChoose.setBundleId(bundleid);
-                loanChoose.setExpiredDate(expiredDate);
-                loanChoose.setStudentId(studentId);
-                loanChoose.setLoanStatus(loanstatus);
-                loanChoose.setLoanDate(loandate);
-//                update(loanChoose);
-
-                if (loanService == null) {
-                    loanService = APIUtils.getLoanService();
-                }
-                Call<Loan> call = loanService.updateLoan(loanChoose);
-                call.enqueue(new Callback<Loan>() {
-                    @Override
-                    public void onResponse(Call<Loan> call, Response<Loan> response) {
-                        if (response.isSuccessful()) {
-                            Toast.makeText(LoanItemActivity.this, "Loan update successfully!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<Loan> call, Throwable t) {
-                        Log.e("ERROR: ", t.getMessage());
-                    }
-                });
-            }
-        });
-
-        btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (loanService == null) {
-                    loanService = APIUtils.getLoanService();
-                }
-
-                Call<Loan> call = loanService.deleteLoan(Long.parseLong(edtloanID.getText().toString().trim()));
-                call.enqueue(new Callback<Loan>() {
-                    @Override
-                    public void onResponse(Call<Loan> call, Response<Loan> response) {
-                        Toast.makeText(LoanItemActivity.this, "User deleted successfully!", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onFailure(Call<Loan> call, Throwable t) {
-                        Log.e("ERROR: ", t.getMessage());
-                    }
-                });
-            }
-        });
+//        btnDelete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if (loanService == null) {
+//                    loanService = APIUtils.getLoanService();
+//                }
+//
+//                Call<Loan> call = loanService.deleteLoan(Long.parseLong(edtloanID.getText().toString().trim()));
+//                call.enqueue(new Callback<Loan>() {
+//                    @Override
+//                    public void onResponse(Call<Loan> call, Response<Loan> response) {
+//                        Toast.makeText(LoanItemActivity.this, "User deleted successfully!", Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<Loan> call, Throwable t) {
+//                        Log.e("ERROR: ", t.getMessage());
+//                    }
+//                });
+//            }
+//        });
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
