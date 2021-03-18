@@ -76,4 +76,9 @@ public class AdminMenuActivity extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
+    public void approveLoanRequest(View view) {
+        Intent intent2 = new Intent(this, ApproveLoanActivity.class);
+        startActivity(intent2);
+    }
 }

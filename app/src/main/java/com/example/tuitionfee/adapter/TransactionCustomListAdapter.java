@@ -10,7 +10,11 @@ import android.widget.TextView;
 import com.example.tuitionfee.R;
 import com.example.tuitionfee.model.Transaction;
 
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class TransactionCustomListAdapter extends BaseAdapter {
@@ -44,11 +48,25 @@ public class TransactionCustomListAdapter extends BaseAdapter {
         }else{
             TextView txtAmount = convertView.findViewById(R.id.transAmount);
             TextView txtDate = convertView.findViewById(R.id.transDate);
-
+            TextView transID = convertView.findViewById(R.id.transID);
             Transaction currentTrans = transactionList.get(position);
 
-            txtAmount.setText(String.valueOf(currentTrans.getAmount()));
-            txtDate.setText(currentTrans.getDate());
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+            SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd");
+
+            Date transDate = new Date();
+
+            try {
+                transDate  = sdf.parse(currentTrans.getDate());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            String formattedTransDate = output.format(transDate);
+            DecimalFormat formatter = new DecimalFormat("###,###,###");
+
+            transID.setText(String.valueOf(currentTrans.getId()));
+            txtAmount.setText(formatter.format(currentTrans.getAmount()));
+            txtDate.setText(formattedTransDate);
         }
         return convertView;
     }

@@ -75,7 +75,7 @@ public class ManageSubjectActivity extends AppCompatActivity {
                             listView.setAdapter(new SubjectCustomListAdapter(ManageSubjectActivity.this, listSubject));
                             Toast.makeText(ManageSubjectActivity.this, "Success", Toast.LENGTH_SHORT).show();
                         }else {
-                            Toast.makeText(ManageSubjectActivity.this, "Wrong ID", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ManageSubjectActivity.this, "ID Not Found", Toast.LENGTH_SHORT).show();
                         }
 
                     }

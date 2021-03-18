@@ -6,17 +6,25 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tuitionfee.R;
 import com.example.tuitionfee.model.Loan;
+import com.example.tuitionfee.model.LoanBundle;
+import com.example.tuitionfee.model.LoanRemind;
 import com.example.tuitionfee.remote.APIUtils;
+import com.example.tuitionfee.remote.LoanBundleService;
+import com.example.tuitionfee.remote.LoanRemindService;
 import com.example.tuitionfee.remote.LoanService;
+import com.example.tuitionfee.studentActivities.LoanRequestActivity;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import retrofit2.Call;
@@ -26,7 +34,7 @@ import retrofit2.Response;
 public class LoanItemActivity extends AppCompatActivity {
     LoanService loanService;
     Loan loanChoose;
-
+    LoanRemindService loanRemindService;
     EditText edtloanID;
     EditText edtstudentId;
     EditText edtLoandate;
@@ -38,9 +46,11 @@ public class LoanItemActivity extends AppCompatActivity {
     Button btnUpdate;
     Button btnDelete;
     Button btnBack;
-
+    LoanRemind loanRemind = new LoanRemind();
+    LoanBundleService loanBundleService;
     Date expiredDate;
     Date loanDate;
+    LoanBundle loanBundle;
 
 
     @Override
@@ -60,12 +70,13 @@ public class LoanItemActivity extends AppCompatActivity {
         edtAmount = (EditText) findViewById(R.id.txtAmount);
         edtLoanstatus = (EditText) findViewById(R.id.txtLoanstatus);
         edtAmountreturned = (EditText) findViewById(R.id.txtAmountreturned);
-
+        loanBundleService = APIUtils.getLoanBundleService();
+        loanRemindService = APIUtils.getLoanRemindService();
         Bundle extras = getIntent().getExtras();
         String loandate = extras.getString("loandate");
         String studentid = extras.getString("studentId");
 
-        String expireddate =extras.getString("expiredDate");
+        String expireddate = extras.getString("expiredDate");
 
 //        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 //        String format = formatter.format(expireddate);
@@ -77,7 +88,7 @@ public class LoanItemActivity extends AppCompatActivity {
         loanDate = new Date();
 
         try {
-            expiredDate  = sdf.parse(expireddate);
+            expiredDate = sdf.parse(expireddate);
             loanDate = sdf.parse(loandate);
         } catch (ParseException e) {
             e.printStackTrace();
@@ -86,11 +97,11 @@ public class LoanItemActivity extends AppCompatActivity {
         String formattedLoanDate = output.format(loanDate);
 
 
-        String amount =extras.getString("amount");
-        String loanstatus =extras.getString("loanStatus");
-        String amountreturned =extras.getString("amountReturned");
-        String loan_id =extras.getString("loanId");
-        String bundleid =extras.getString("bundleId");
+        String amount = extras.getString("amount");
+        String loanstatus = extras.getString("loanStatus");
+        String amountreturned = extras.getString("amountReturned");
+        String loan_id = extras.getString("loanId");
+        String bundleid = extras.getString("bundleId");
 
         edtloanID.setText(loan_id);
         edtstudentId.setText(studentid);
@@ -102,12 +113,10 @@ public class LoanItemActivity extends AppCompatActivity {
         edtAmountreturned.setText(amountreturned);
 
 
-
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Long id = Long.parseLong(edtloanID.getText().toString().trim());
-                System.out.println("ooooooooooooooooooooooooooooooooooooo :" +id);
 //                Date loandate  = new Date();
 //                Date expiredDate = new Date();
 //                try {
@@ -117,13 +126,13 @@ public class LoanItemActivity extends AppCompatActivity {
 //                    e.printStackTrace();
 //                }
                 String loanDate = edtLoandate.getText().toString().trim();
-                String  expiredDate = edtExpireddate.getText().toString().trim();
+                String expiredDate = edtExpireddate.getText().toString().trim();
 
                 String studentId = edtstudentId.getText().toString().trim();
-                Long bundleid =  Long.parseLong(edtBundleid.getText().toString().trim());
-                Long amount =  Long.parseLong(edtAmount.getText().toString().trim());
+                Long bundleid = Long.parseLong(edtBundleid.getText().toString().trim());
+                Long amount = Long.parseLong(edtAmount.getText().toString().trim());
                 String loanstatus = edtLoanstatus.getText().toString().trim();
-                Long amountreturned =  Long.parseLong(edtAmountreturned.getText().toString().trim());
+                Long amountreturned = Long.parseLong(edtAmountreturned.getText().toString().trim());
                 loanChoose = new Loan();
                 loanChoose.setLoanId(id);
                 loanChoose.setAmount(amount);
@@ -135,7 +144,7 @@ public class LoanItemActivity extends AppCompatActivity {
                 loanChoose.setLoanDate(loandate);
 //                update(loanChoose);
 
-                if(loanService == null){
+                if (loanService == null) {
                     loanService = APIUtils.getLoanService();
                 }
                 Call<Loan> call = loanService.updateLoan(loanChoose);
@@ -159,11 +168,11 @@ public class LoanItemActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(loanService == null){
+                if (loanService == null) {
                     loanService = APIUtils.getLoanService();
                 }
 
-                Call<Loan> call = loanService.deleteLoan( Long.parseLong(edtloanID.getText().toString().trim()));
+                Call<Loan> call = loanService.deleteLoan(Long.parseLong(edtloanID.getText().toString().trim()));
                 call.enqueue(new Callback<Loan>() {
                     @Override
                     public void onResponse(Call<Loan> call, Response<Loan> response) {
@@ -185,28 +194,56 @@ public class LoanItemActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
+        getLoanBundle(Long.parseLong(bundleid));
+        System.out.println(Long.parseLong(loan_id));
+        loanRemind.setLoanId(Long.parseLong(loan_id));
+        loanRemind.setStudentID(studentid);
     }
-//    public void update(Loan loan){
-//        if(loanService == null){
-//            loanService = APIUtils.getLoanService();
-//        }
-//        Call<Loan> call = loanService.updateLoan(loan);
-//        call.enqueue(new Callback<Loan>() {
-//            @Override
-//            public void onResponse(Call<Loan> call, Response<Loan> response) {
-//                if (response.isSuccessful()) {
-//                    Toast.makeText(LoanItemActivity.this, "Loan update successfully!", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Loan> call, Throwable t) {
-//                Log.e("ERROR: ", t.getMessage());
-//            }
-//        });
-//    }
+
+    public void clickToCreateReminder(View view) {
+
+        createLoanRemind(loanRemind);
+    }
+
+    public void getLoanBundle(Long loanBundleId){
+        Call<LoanBundle> call = loanBundleService.findByLoanBundleID(loanBundleId);
+        call.enqueue(new Callback<LoanBundle>() {
+            @Override
+            public void onResponse(Call<LoanBundle> call, Response<LoanBundle> response) {
+                if(response.isSuccessful()){
+                    loanBundle = response.body();
+                    if(loanBundle != null){
+                        loanRemind.setAmount(loanBundle.getAmount()/loanBundle.getMonth());
+                        SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd");
+                        Date sendDate = new Date();
+                        loanRemind.setSendDate(output.format(sendDate));
+                        loanRemind.setPaid(false);
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoanBundle> call, Throwable t) {
+                Toast.makeText(LoanItemActivity.this,"Error Making Connection To API",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void createLoanRemind(LoanRemind loanRemind){
+        Call<LoanRemind> call = loanRemindService.addLoanRemind(loanRemind);
+        call.enqueue(new Callback<LoanRemind>() {
+            @Override
+            public void onResponse(Call<LoanRemind> call, Response<LoanRemind> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(LoanItemActivity.this,"Create Successfully",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoanRemind> call, Throwable t) {
+                Toast.makeText(LoanItemActivity.this,"Create Error",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }

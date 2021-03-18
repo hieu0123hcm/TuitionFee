@@ -68,6 +68,8 @@ public class StudyingActivity extends AppCompatActivity {
                             }
                         });
                         Toast.makeText(StudyingActivity.this,"Success",Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(StudyingActivity.this,"No Item Found",Toast.LENGTH_SHORT).show();
                     }
 
                 }

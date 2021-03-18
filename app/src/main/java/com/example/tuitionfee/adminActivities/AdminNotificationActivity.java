@@ -84,6 +84,8 @@ public class AdminNotificationActivity extends AppCompatActivity {
         });
     }
 
+
+
     public void changeNotificationStatus(Notification notification){
         Call<Notification> call = notificationService.createNotification(notification);
         call.enqueue(new Callback<Notification>() {

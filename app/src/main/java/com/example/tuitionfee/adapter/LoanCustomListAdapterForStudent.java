@@ -10,6 +10,9 @@ import android.widget.TextView;
 import com.example.tuitionfee.R;
 import com.example.tuitionfee.model.Loan;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class LoanCustomListAdapterForStudent extends BaseAdapter {
@@ -49,7 +52,20 @@ public class LoanCustomListAdapterForStudent extends BaseAdapter {
         txtLoanStatus.setTextColor(0xFF00FF00);
         txtLoanStatus.setAllCaps(true);
         txtLoanID.setText(String.valueOf(currentLoan.getLoanId()));
-        txtExpiredDate.setText(String.valueOf(currentLoan.getExpiredDate()));
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd");
+
+        Date expiredDate = new Date();
+        Date loanDate = new Date();
+
+        try {
+            expiredDate  = sdf.parse(currentLoan.getExpiredDate());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String formattedExpired = output.format(expiredDate);
+
+        txtExpiredDate.setText(formattedExpired);
         txtLoanStatus.setText(currentLoan.getLoanStatus());
 
         return convertView;

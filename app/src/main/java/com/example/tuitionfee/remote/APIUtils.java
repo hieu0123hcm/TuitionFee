@@ -2,6 +2,8 @@ package com.example.tuitionfee.remote;
 
 import android.widget.RelativeLayout;
 
+import com.example.tuitionfee.model.LoanBundle;
+import com.example.tuitionfee.model.LoanRemind;
 import com.example.tuitionfee.model.Notification;
 
 public class APIUtils {
@@ -43,6 +45,12 @@ public class APIUtils {
     }
     public static TransactionService getTransactionService() {
         return RetrofitClient.getClient(API_URL).create(TransactionService.class);
+    }
+    public static LoanBundleService getLoanBundleService(){
+        return RetrofitClient.getClient(API_URL).create(LoanBundleService.class);
+    }
+    public static LoanRemindService getLoanRemindService(){
+        return RetrofitClient.getClient(API_URL).create(LoanRemindService.class);
     }
     }
 

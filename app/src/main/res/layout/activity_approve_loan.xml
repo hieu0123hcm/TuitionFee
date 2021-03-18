@@ -4,26 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".adminActivities.StudentManage.StudentManagementActivity"
+    tools:context=".adminActivities.ApproveLoanActivity"
     android:orientation="vertical">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Student Management"
+        android:text="Loan Requests"
         android:textSize="25dp"
         android:textStyle="bold"
         android:textAlignment="center"
         android:textColor="@color/blue_800"
         android:layout_marginBottom="50dp"/>
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/lv_student"/>
 
-<!--    <Button-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Logout"-->
-<!--        android:id="@+id/btnLogout"/>-->
+    <ListView
+        android:id="@+id/txtLoanRequestListView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"/>
+
 </LinearLayout>

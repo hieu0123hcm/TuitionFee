@@ -9,13 +9,22 @@ import android.widget.TextView;
 
 import com.example.tuitionfee.R;
 import com.example.tuitionfee.model.Notification;
+import com.example.tuitionfee.model.Student;
 import com.example.tuitionfee.model.Studying;
+import com.example.tuitionfee.remote.APIUtils;
+import com.example.tuitionfee.remote.StudentService;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class NotificationCustomListAdapter extends BaseAdapter {
     private Context context;
     private List<Notification> notificationList;
+    private StudentService studentService = APIUtils.getStudentService();
+
 
     public NotificationCustomListAdapter(Context context, List<Notification> notificationList) {
         this.context = context;
@@ -47,9 +56,25 @@ public class NotificationCustomListAdapter extends BaseAdapter {
         TextView txtMessage = convertView.findViewById(R.id.txtMessage);
         TextView txtDate = convertView.findViewById(R.id.txtNotiDate);
 
+        Call<Student> call = studentService.getStudentByAccID(currentNotification.getSendid());
+        call.enqueue(new Callback<Student>() {
+            @Override
+            public void onResponse(Call<Student> call, Response<Student> response) {
+                if(response.isSuccessful()){
+                    txtSendID.setText(response.body().getStudent_id());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Student> call, Throwable t) {
+
+            }
+        });
+
         txtDate.setText(currentNotification.getCreated_on());
-        txtSendID.setText(currentNotification.getSendid());
         txtMessage.setText(currentNotification.getMessage());
         return convertView;
     }
+
+
 }

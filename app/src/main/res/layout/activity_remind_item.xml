@@ -2,48 +2,42 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/divider"
-        android:layout_marginTop="10dp"/>
+    android:orientation="vertical">
+
+
     <TextView
         android:textColorHighlight="@color/white"
         android:layout_marginTop="10dp"
-        android:id="@+id/transID"
+        android:id="@+id/txtLoanIDRe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:fontFamily="sans-serif-black"
-        android:textColor="@color/white"
-        android:textStyle="bold" />
-    <TextView
-        android:textColorHighlight="@color/white"
-        android:layout_marginTop="10dp"
-        android:id="@+id/transAmount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:fontFamily="sans-serif-black"
-        android:textColor="@color/white"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:text="PRO192"
+        android:textFontWeight="@android:integer/config_mediumAnimTime" />
 
     <TextView
 
-        android:id="@+id/transDate"
+        android:id="@+id/txtSendDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
         android:layout_marginLeft="16dp"
+        android:text="Object-Oriented Programming"/>
+
+    <TextView
+
+        android:id="@+id/txtAmountRe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:text="Object-Oriented Programming"
         android:layout_marginBottom="10dp"/>
-
-
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/divider"
         android:layout_marginBottom="10dp"/>
+
 </LinearLayout>

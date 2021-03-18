@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TuitionFee">
-        <activity android:name=".studentActivities.ShowPaymentActivity"></activity>
+        <activity android:name=".studentActivities.ReminderDetailActivity"></activity>
+        <activity android:name=".adminActivities.ApproveLoanItemActivity" />
+        <activity android:name=".adminActivities.ApproveLoanActivity" />
+        <activity android:name=".studentActivities.LoanRequestActivity" />
+        <activity android:name=".studentActivities.ShowPaymentActivity" />
         <activity android:name=".GetDetailLoanActivity" />
         <activity android:name=".studentActivities.StudentMenuActivity" />
         <activity android:name=".adminActivities.AdminMenuActivity" />

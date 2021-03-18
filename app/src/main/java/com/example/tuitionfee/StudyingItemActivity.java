@@ -22,6 +22,7 @@ import com.example.tuitionfee.remote.StudyingService;
 import com.example.tuitionfee.remote.SubjectService;
 
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
 import retrofit2.Call;
@@ -96,8 +97,8 @@ public class StudyingItemActivity extends AppCompatActivity {
             public void onResponse(Call<Subject> call, Response<Subject> response) {
                 subject = response.body();
                 TextView txtTuitionFee = findViewById(R.id.txtTuitionFee);
-
-                txtTuitionFee.setText(String.valueOf(subject.getTuitionFee()));
+                DecimalFormat formatter = new DecimalFormat("###,###,###");
+                txtTuitionFee.setText(formatter.format(subject.getTuitionFee()));
                 Toast.makeText(StudyingItemActivity.this,"Success",Toast.LENGTH_SHORT).show();
             }
 
@@ -117,14 +118,12 @@ public class StudyingItemActivity extends AppCompatActivity {
                     Toast.makeText(StudyingItemActivity.this, "Request created successfully!", Toast.LENGTH_SHORT).show();
                     Button request = findViewById(R.id.btnRequest);
                     request.setEnabled(false);
-                    System.out.println("co' vo day k");
                 }
             }
 
             @Override
             public void onFailure(Call<Notification> call, Throwable t) {
                 Toast.makeText(StudyingItemActivity.this, "Error", Toast.LENGTH_SHORT).show();
-                System.out.println("hay la vo day");
             }
         });
     }

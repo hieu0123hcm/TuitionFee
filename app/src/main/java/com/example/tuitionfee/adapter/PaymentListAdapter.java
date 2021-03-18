@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.tuitionfee.R;
 import com.example.tuitionfee.model.Payment;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,8 +50,10 @@ public class PaymentListAdapter extends BaseAdapter {
             TextView txtAmmountPay = convertView.findViewById(R.id.txtAmmountPay);
             TextView txtPayDate = convertView.findViewById(R.id.txtPayDate);
 
+            DecimalFormat formatter = new DecimalFormat("###,###,###");
+
             txtPayID.setText("Payment ID: " + String.valueOf(currentPayment.getPayment_id()));
-            txtAmmountPay.setText("Amount: " + String.valueOf(currentPayment.getAmount()));
+            txtAmmountPay.setText("Amount: " + formatter.format(currentPayment.getAmount()));
             txtStudentIDPay.setText("Student ID: " +currentPayment.getStudentID());
             txtPayDate.setText("Date: " +currentPayment.getCreated_on());
 

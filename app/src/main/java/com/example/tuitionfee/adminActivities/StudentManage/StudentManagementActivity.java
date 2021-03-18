@@ -41,14 +41,14 @@ public class StudentManagementActivity extends AppCompatActivity {
         listView = findViewById(R.id.lv_student);
         studentService = APIUtils.getStudentService();
 
-        btnLogout =findViewById(R.id.btnLogout);
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(StudentManagementActivity.this, LoginActivity.class));
-            }
-        });
+//        btnLogout =findViewById(R.id.btnLogout);
+//        btnLogout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                FirebaseAuth.getInstance().signOut();
+//                startActivity(new Intent(StudentManagementActivity.this, LoginActivity.class));
+//            }
+//        });
 
         getAllStudent();
 

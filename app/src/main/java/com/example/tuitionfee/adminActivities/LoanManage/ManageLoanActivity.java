@@ -107,7 +107,7 @@ public class ManageLoanActivity extends AppCompatActivity {
                     listView.setAdapter(new LoanCustomListAdapter(ManageLoanActivity.this, listLoan));
                     Toast.makeText(ManageLoanActivity.this, "Success", Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(ManageLoanActivity.this, "Wrong ID", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ManageLoanActivity.this, "ID Not Found", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -119,4 +119,6 @@ public class ManageLoanActivity extends AppCompatActivity {
         });
 
     }
+
+
 }

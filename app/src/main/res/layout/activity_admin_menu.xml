@@ -4,48 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".adminActivities.AdminMenuActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".adminActivities.AdminMenuActivity">
 
     <TextView
-        android:layout_width="200dp"
-        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Admin"
-        android:textSize="25dp"
-        android:textStyle="bold"
+        android:layout_marginBottom="50dp"
+        android:text="Admin Board"
         android:textAlignment="center"
         android:textColor="@color/blue_800"
-        android:layout_marginBottom="50dp"/>
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:text="Manage Student"
-        android:onClick="goToManageStudent"
-        android:layout_gravity="center"/>
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:text="Manage Loan"
-        android:onClick="goToManageLoan"
-        android:layout_gravity="center"/>
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:text="Manage Subject"
-        android:onClick="goToManageSubject"
-        android:layout_gravity="center"/>
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:text="View Requests"
-        android:onClick="goToViewRequests"
-        android:layout_gravity="center"/>
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:text="Show Profile"
-        android:onClick="showProfile"
-        android:layout_gravity="center"/>
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:onClick="goToManageStudent"
+            android:text="Manage Student" />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:onClick="goToManageLoan"
+            android:text="Manage Loan" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:onClick="goToManageSubject"
+            android:text="Manage Subject" />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:onClick="goToViewRequests"
+            android:text="Re-Study Requests" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:onClick="showProfile"
+            android:text="Show Profile" />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:onClick="approveLoanRequest"
+            android:text="Loan Requests" />
+
+    </LinearLayout>
+
 
 </LinearLayout>

@@ -17,8 +17,14 @@ public interface LoanService {
     @GET("loan/{studentid}")
     Call<List<Loan>> getLoanFromStudentID(@Path("studentid") String StudentID );
 
+    @GET("loans/{loanid}")
+    Call<Loan> getLoanByID(@Path("loanid") Long LoanID );
+
     @GET("loans")
     Call<List<Loan>> getList();
+
+    @GET("loans/unactive")
+    Call<List<Loan>> getUnactiveList();
 
     @POST("loan/add")
     Call<Loan> addLoan(@Body Loan loan);

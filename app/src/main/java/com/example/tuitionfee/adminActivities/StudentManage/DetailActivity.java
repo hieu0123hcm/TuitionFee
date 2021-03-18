@@ -95,13 +95,13 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-        btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String id = student.getStudent_id();
-                deleteStudent(id);
-            }
-        });
+//        btnDelete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String id = student.getStudent_id();
+//                deleteStudent(id);
+//            }
+//        });
     }
 
     private void deleteStudent(String id) {
